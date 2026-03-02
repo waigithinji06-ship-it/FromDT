@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digit Dominator AI</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, sans-serif;
+    background:#0F1117;
+    color:white;
+}
+.container{
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+.card{
+    background:#1A1F2B;
+    padding:16px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+.running{ background:#00ff8850; color:#00ff88;}
+.stopped{ background:#ff003350; color:#ff3355;}
+
+.controls input, select{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:8px;
+    border:none;
+    background:#0F1117;
+    color:white;
+}
+button{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.run{
+    background:#0066ff;
+    box-shadow:0 0 15px #0066ff;
+    color:white;
+}
+.stop{
+    background:#ff0033;
+    box-shadow:0 0 15px #ff0033;
+}
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+.stat{
+    background:#0F1117;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
+.stat h3{
+    margin:0;
+    color:#00ffcc;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="card hero">
+<div>
+<h2>🤖 Digit Dominator AI</h2>
+<small>Volatility 75 (1s) • Over/Under</small>
+</div>
+<div id="status" class="status stopped">STOPPED</div>
+</div>
+
+<div class="card">
+<h3>Bot Control</h3>
+<input type="number" id="stake" value="1" placeholder="Stake">
+<select id="type">
+<option value="DIGITOVER">Digit Over 2</option>
+<option value="DIGITUNDER">Digit Under 7</option>
+</select>
+<input type="number" id="tp" placeholder="Daily Take Profit">
+<input type="number" id="sl" placeholder="Daily Stop Loss">
+<button id="runBtn" class="run">🚀 RUN BOT</button>
+</div>
+
+<div class="card">
+<h3>Performance</h3>
+<div class="stats">
+<div class="stat"><small>Win Rate</small><h3 id="wr">0%</h3></div>
+<div class="stat"><small>Profit</small><h3 id="profit">$0</h3></div>
+<div class="stat"><small>Loss Streak</small><h3 id="ls">0</h3></div>
+<div class="stat"><small>Probability</small><h3 id="prob">0%</h3></div>
+</div>
+</div>
+
+</div>
+
+<script>
+const API_TOKEN = "PASTE_YOUR_DERIV_TOKEN_HERE";
+const APP_ID = 1089;
+
+let ws;
+let running=false;
+let wins=0, losses=0, profit=0;
+let lossStreak=0;
+let digitHistory=[];
+let cooldown=false;
+
+const runBtn=document.getElementById("runBtn");
+const statusBox=document.getElementById("status");
+
+runBtn.onclick=()=>{
+running=!running;
+
+if(running){
+connect();
+runBtn.textContent="⛔ STOP BOT";
+runBtn.className="stop";
+statusBox.textContent="RUNNING";
+statusBox.className="status running";
+}else{
+if(ws) ws.close();
+runBtn.textContent="🚀 RUN BOT";
+runBtn.className="run";
+statusBox.textContent="STOPPED";
+statusBox.className="status stopped";
+}
+};
+
+function connect(){
+ws=new WebSocket(`wss://ws.derivws.com/websockets/v3?app_id=${APP_ID}`);
+
+ws.onopen=()=>{
+ws.send(JSON.stringify({authorize:API_TOKEN}));
+};
+
+ws.onmessage=(msg)=>{
+let data=JSON.parse(msg.data);
+
+if(data.msg_type==="authorize"){
+subscribeTicks();
+}
+
+if(data.msg_type==="tick"){
+handleTick(data.tick.quote);
+}
+
+if(data.msg_type==="proposal_open_contract"){
+if(data.proposal_open_contract.status==="won"){
+wins++;
+profit+=parseFloat(data.proposal_open_contract.profit);
+lossStreak=0;
+}else if(data.proposal_open_contract.status==="lost"){
+losses++;
+profit+=parseFloat(data.proposal_open_contract.profit);
+lossStreak++;
+if(lossStreak>=3) cooldown=true;
+}
+updateStats();
+}
+};
+}
+
+function subscribeTicks(){
+ws.send(JSON.stringify({
+ticks:"R_75",
+subscribe:1
+}));
+}
+
+function handleTick(price){
+let lastDigit=parseInt(price.toString().slice(-1));
+digitHistory.push(lastDigit);
+if(digitHistory.length>50) digitHistory.shift();
+
+if(digitHistory.length>=50 && running && !cooldown){
+let prob=calculateProbability();
+document.getElementById("prob").textContent=prob+"%";
+
+if(prob>65){
+placeTrade();
+}
+}
+}
+
+function calculateProbability(){
+let countHigh=digitHistory.filter(d=>d>2).length;
+let probability=(countHigh/digitHistory.length)*100;
+return probability.toFixed(1);
+}
+
+function placeTrade(){
+let stake=parseFloat(document.getElementById("stake").value);
+let type=document.getElementById("type").value;
+
+ws.send(JSON.stringify({
+proposal:1,
+amount:stake,
+basis:"stake",
+contract_type:type,
+currency:"USD",
+duration:1,
+duration_unit:"t",
+symbol:"R_75",
+barrier:type==="DIGITOVER" ? 2 : 7
+}));
+
+ws.onmessage=(msg)=>{
+let data=JSON.parse(msg.data);
+if(data.msg_type==="proposal"){
+ws.send(JSON.stringify({buy:data.proposal.id, price:stake}));
+}
+};
+}
+
+function updateStats(){
+let total=wins+losses;
+let winRate=total>0?((wins/total)*100).toFixed(1):0;
+
+document.getElementById("wr").textContent=winRate+"%";
+document.getElementById("profit").textContent="$"+profit.toFixed(2);
+document.getElementById("ls").textContent=lossStreak;
+}
+</script>
+
+</body>
+</html>
