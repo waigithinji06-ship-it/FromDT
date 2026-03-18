@@ -54,6 +54,13 @@
 :root.day .topbar { background: #fff; border-bottom-color: var(–border); }
 :root.day .ai-header { background: var(–bg); }
 :root.day .bnav { background: #fff; }
+/* Day mode: login page background and card */
+:root.day #pgLogin { background: var(–bg) !important; }
+:root.day #pgLogin input { background: var(–surface) !important; color: var(–text) !important; border-color: var(–border) !important; }
+:root.day #pgLogin button#loginBtn { background: #dc2626 !important; }
+/* Ensure body background applies in day mode everywhere */
+:root.day body,
+:root.day #appShell { background: var(–bg); }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{height:100%;}
@@ -230,12 +237,12 @@ font-size:10px;font-weight:600;border:1px solid;transition:all .3s;
 padding:8px 16px;border-radius:9px;font-family:‘Inter’,sans-serif;
 font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .2s;
 }
-.ai-btn.start{background:var(–green);color:#fff;}
-.ai-btn.start:hover{filter:brightness(1.1);box-shadow:0 4px 16px rgba(34,197,94,.3);}
-.ai-btn.stop{background:var(–red);color:#fff;}
-.ai-btn.stop:hover{filter:brightness(1.1);box-shadow:0 4px 16px rgba(239,68,68,.3);}
-.ai-btn.reset{background:var(–card);border:1px solid var(–border);color:var(–sub);padding:8px 10px;}
-.ai-btn.reset:hover{border-color:var(–yellow);color:var(–yellow);}
+.ai-btn.start{background:#2563eb;color:#fff;box-shadow:0 2px 10px rgba(37,99,235,.35);}
+.ai-btn.start:hover{filter:brightness(1.12);box-shadow:0 4px 18px rgba(37,99,235,.5);}
+.ai-btn.stop{background:#ef4444;color:#fff;box-shadow:0 2px 10px rgba(239,68,68,.35);}
+.ai-btn.stop:hover{filter:brightness(1.12);box-shadow:0 4px 18px rgba(239,68,68,.5);}
+.ai-btn.reset{background:var(–card);border:2px solid var(–border2);color:var(–sub);padding:9px 16px;font-size:18px;min-width:42px;}
+.ai-btn.reset:hover{border-color:var(–yellow);color:var(–yellow);transform:rotate(20deg);}
 .ai-btn:disabled{opacity:.3;cursor:not-allowed;filter:none!important;box-shadow:none!important;}
 
 /* ══ ACTIVE TRADE ══ */
@@ -356,29 +363,29 @@ padding:9px 11px;max-height:150px;overflow-y:auto;margin-bottom:10px;
 /* ══ TRANSACTION LOG ══ */
 .tlog{
 background:var(–card);border:1px solid var(–border);
-border-radius:10px;overflow:hidden;max-height:200px;overflow-y:auto;
+border-radius:10px;overflow:hidden;max-height:280px;overflow-y:auto;
 }
 .tlog::-webkit-scrollbar{width:3px;}
 .log-entry{
-display:grid;grid-template-columns:52px 56px 52px 64px 54px 46px 60px;
-gap:4px;padding:7px 10px;
+display:grid;grid-template-columns:54px 60px 58px 62px 56px 72px 66px;
+gap:3px;padding:8px 10px;
 border-bottom:1px solid var(–border);
-font-family:‘JetBrains Mono’,monospace;font-size:9px;align-items:center;
+font-family:‘JetBrains Mono’,monospace;font-size:9.5px;align-items:center;
 transition:background .12s;
 }
 .log-entry:last-child{border-bottom:none;}
-.log-entry:hover{background:rgba(255,255,255,.02);}
-.log-entry.win{border-left:2px solid var(–green);}
-.log-entry.loss{border-left:2px solid var(–red);}
-.log-entry.pending{border-left:2px solid var(–yellow);}
+.log-entry:hover{background:rgba(255,255,255,.03);}
+.log-entry.win{border-left:3px solid var(–green);background:rgba(34,197,94,.03);}
+.log-entry.loss{border-left:3px solid var(–red);background:rgba(239,68,68,.03);}
+.log-entry.pending{border-left:3px solid var(–yellow);}
 .log-header{
-background:var(–card2);font-size:8px;font-weight:600;color:var(–dim);
-letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid var(–border);
+background:var(–card2);font-size:8px;font-weight:700;color:var(–sub);
+letter-spacing:.8px;text-transform:uppercase;border-bottom:2px solid var(–border2);
 position:sticky;top:0;z-index:1;
 }
-.log-header.log-entry{border-left:2px solid transparent;}
-.pnl-pos{color:var(–green);font-weight:700;}
-.pnl-neg{color:var(–red);font-weight:700;}
+.log-header.log-entry{border-left:3px solid transparent;}
+.pnl-pos{color:var(–green);font-weight:800;}
+.pnl-neg{color:var(–red);font-weight:800;}
 .pnl-zero{color:var(–dim);}
 
 /* ══ ANALYSIS PAGE ══ */
@@ -426,9 +433,9 @@ position:sticky;top:0;z-index:1;
 .dtitle{font-weight:600;font-size:11px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;}
 .dbars{display:flex;gap:2px;align-items:flex-end;height:42px;}
 .dbw{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;}
-.dpct{font-size:7px;font-family:‘JetBrains Mono’,monospace;color:var(–dim);}
+.dpct{font-size:7px;font-family:‘JetBrains Mono’,monospace;color:var(–dim);font-weight:700;}
 .dbar{width:100%;border-radius:2px 2px 0 0;transition:height .4s,background .3s;}
-.ddig{font-size:8px;font-family:‘JetBrains Mono’,monospace;color:var(–dim);}
+.ddig{font-size:10px;font-family:‘JetBrains Mono’,monospace;color:var(–text);font-weight:800;}
 .ld2{width:15px;height:15px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:‘JetBrains Mono’,monospace;font-size:8px;font-weight:700;background:var(–border);color:var(–sub);}
 .ld2.e{background:rgba(34,197,94,.12);color:var(–green);}
 .ld2.o{background:rgba(249,115,22,.12);color:var(–accent2);}
@@ -513,7 +520,7 @@ position:sticky;top:0;z-index:1;
      PAGE 0 — LOGIN
 ════════════════════════════════ -->
 
-<div id="pgLogin" class="page active" style="align-items:center;justify-content:center;background:var(--bg);position:fixed;inset:0;z-index:9999;">
+<div id="pgLogin" style="display:flex;align-items:center;justify-content:center;background:var(--bg);position:fixed;inset:0;z-index:9999;overflow-y:auto;">
   <div style="width:100%;max-width:400px;padding:20px;">
 
 ```
@@ -565,8 +572,8 @@ position:sticky;top:0;z-index:1;
 
   <!-- Login button -->
   <button id="loginBtn" onclick="doLogin()"
-    style="width:100%;padding:13px;background:var(--accent);border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#fff;cursor:pointer;margin-bottom:14px;transition:all .2s;letter-spacing:.2px;">
-    CONNECT TO DERIV
+    style="width:100%;padding:13px;background:#ef4444;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#fff;cursor:pointer;margin-bottom:14px;transition:all .2s;letter-spacing:.2px;box-shadow:0 4px 18px rgba(239,68,68,.35);">
+    🔴 CONNECT TO DERIV
   </button>
 
   <!-- Divider -->
@@ -755,9 +762,12 @@ position:sticky;top:0;z-index:1;
       <div style="font-size:9px;color:var(--sub);font-family:'Space Mono',monospace;letter-spacing:2px;margin-bottom:4px;">BOT ACTIVITY</div>
       <div id="aiLog" class="ai-log"><div class="ai-log-line info"><span class="ts">--:--:--</span>System ready. Waiting for connection…</div></div>
       <!-- Transaction log -->
-      <div style="font-size:9px;color:var(--sub);font-family:'Space Mono',monospace;letter-spacing:2px;margin:10px 0 4px;">TRANSACTIONS</div>
+      <div style="font-size:9px;color:var(--sub);font-family:'Space Mono',monospace;letter-spacing:2px;margin:10px 0 4px;display:flex;justify-content:space-between;align-items:center;">
+        <span>📋 TRANSACTIONS</span>
+        <span id="tradeCount" style="color:var(--dim);font-size:8px;">0 trades</span>
+      </div>
       <div id="tradeLog" class="tlog">
-        <div class="log-entry log-header"><div>TIME</div><div>INDEX</div><div>TYPE</div><div>ENTRY</div><div>STAKE</div><div>RESULT</div><div>P&L</div></div>
+        <div class="log-entry log-header"><div>TIME</div><div>INDEX</div><div>TYPE</div><div>ENTRY</div><div>STAKE</div><div>RESULT</div><div>P&amp;L</div></div>
       </div>
     </div>
 
@@ -1316,6 +1326,7 @@ function doLogin(){
   if(!t){showLE('Please enter your API token');return;}
   if(t.length<10){showLE('Token too short');return;}
   const btn=document.getElementById('loginBtn');
+  btn.disabled=true;
   btn.classList.add('ld');btn.textContent='VERIFYING…';hideLE();
   userToken=t;verifyToken(t);
 }
@@ -1331,7 +1342,7 @@ function doLogout(){
   try{sessionStorage.removeItem('ds_token');sessionStorage.removeItem('ds_expiry');}catch(e){}
   document.getElementById('appShell').style.display='none';
   document.getElementById('pgLogin').style.display='flex';
-  const lb=document.getElementById('loginBtn');if(lb){lb.classList.remove('ld');lb.textContent='CONNECT TO DERIV';}hideLE();
+  const lb=document.getElementById('loginBtn');if(lb){lb.disabled=false;lb.classList.remove('ld');lb.textContent='🔴 CONNECT TO DERIV';lb.style.background='#ef4444';}hideLE();
 }
 function verifyToken(token){
   let vws;
@@ -1354,8 +1365,11 @@ function verifyToken(token){
 }
 function loginFail(m){
   showLE(m);
-  document.getElementById('loginBtn').classList.remove('ld');
-  document.getElementById('loginBtn').textContent='CONNECT TO DERIV';
+  const btn=document.getElementById('loginBtn');
+  btn.disabled=false;
+  btn.classList.remove('ld');
+  btn.textContent='🔴 CONNECT TO DERIV';
+  btn.style.background='#ef4444';
 }
 function launchDash(auth){
   if(userToken){
@@ -1495,6 +1509,7 @@ function ana(sym){
   const o2=[3,4,5,6,7,8,9].reduce((a,d)=>a+(fr[d]||0),0)/tot*100,u7=100-o2;
   const mxF=Math.max(...fr),mnF=Math.min(...fr.filter(f=>f>0))||0;
   const hotD=fr.indexOf(mxF),coldD=fr.indexOf(mnF);
+  // ── SCORE: how favourable is this market right now ──
   let score=0;
   if(isCon) score+=30;
   if(n>=30) score+=10;
@@ -1502,7 +1517,35 @@ function ana(sym){
   if(vl<50) score+=15;
   const diffBias=Math.abs(ep-50);
   if(diffBias>6) score+=10;
-  score=Math.min(100,score);
+
+  // Digit entropy bonus: lower entropy = more skewed = more edge
+  let entropy=0;
+  fr.forEach(f=>{if(f>0){const p2=f/tot;entropy-=p2*Math.log2(p2);}});
+  const maxEntropy=Math.log2(10);
+  const entropyBonus=Math.max(0,Math.round((1-entropy/maxEntropy)*25));
+  score=Math.min(100,score+entropyBonus);
+
+  // ── MARKET GRADE — controls whether bot should enter ──
+  // Grade A: best conditions — consolidating + strong hot digit + good score
+  // Grade B: acceptable — consolidating + moderate hot digit
+  // Grade C: borderline — some signal, wait for better
+  // SKIP:    expanding or not enough data — never trade
+  const hotPctRaw=mxF/tot*100;
+  // Recent digit activity — how many times hot digit appeared in last 10 ticks
+  let recentHotCount=0;
+  if(s.digits.length>=10){
+    const last10=s.digits.slice(-10);
+    recentHotCount=last10.filter(d=>d===hotD).length;
+  }
+  let marketGrade='SKIP';
+  if(isCon&&hotPctRaw>15&&score>=65&&recentHotCount>=1) marketGrade='A';
+  else if(isCon&&hotPctRaw>12&&score>=50) marketGrade='B';
+  else if(score>=40&&n>=20) marketGrade='C';
+  // Suppress to B if hot digit absent in last 5 ticks (momentum fading)
+  if(s.digits.length>=5){
+    const last5=s.digits.slice(-5);
+    if(last5.filter(d=>d===hotD).length===0&&marketGrade==='A') marketGrade='B';
+  }
   const eoR=()=>{if(!isCon)return{l:'AVOID',c:'av',t:'Expanding'};const b=Math.abs(ep-50);if(b>8)return{l:(ep>50?'EVEN':'ODD')+' ▲',c:'sb',t:Math.round(Math.max(ep,op))+'%'};if(b>4)return{l:ep>50?'EVEN':'ODD',c:'by',t:Math.round(Math.max(ep,op))+'%'};return{l:'NEUTRAL',c:'nt',t:'~50%'};};
   const o4R=()=>{if(!isCon)return{l:'AVOID',c:'av',t:''};const b=Math.abs(o4-50);if(b>8)return{l:(o4>50?'OVER4':'UNDER5')+' ▲',c:'sb',t:Math.round(Math.max(o4,u5))+'%'};if(b>3)return{l:o4>50?'OVER4':'UNDER5',c:'by',t:Math.round(Math.max(o4,u5))+'%'};return{l:'NEUTRAL',c:'nt',t:'~50%'};};
   const o2R=()=>{if(n<20)return{l:'LOADING',c:'wt',t:''};if(isCon)return{l:(o2>=u7?'OVER2':'UNDER7')+' ★',c:'sb',t:'~70% base'};return{l:o2>=u7?'OVER2':'UNDER7',c:'by',t:'70%'};};
@@ -1516,7 +1559,7 @@ function ana(sym){
     hotRecent=hotRecentPct>=13;
   }
   const result={isCon,ms,vl,ep,op,o4,u5,o2,u7,hotD,coldD,fr,tot,score,
-    hotRecent,hotRecentPct,
+    hotRecent,hotRecentPct,recentHotCount,marketGrade,hotPctRaw,
     eo:eoR(),o4r:o4R(),o2r:o2R(),dif:difR(),mat:matR()};
   _anaCache[sym]={tick:s.ticks,result};
   return result;
@@ -1556,11 +1599,13 @@ function findBestRecoveryMarket(){
   let best=null, bestPct=0;
   IDX.forEach(i=>{
     const s=ST[i.s];
-    if(!s||!s.conn||s.digits.length<20) return;
+    if(!s||!s.conn||s.digits.length<25) return;
     try{
       const a=ana(i.s);
-      if(a.o2>=65&&a.o2>bestPct){bestPct=a.o2;best={sym:i.s,a,direction:'OVER',barrier:2,pct:a.o2};}
-      if(a.u7>=65&&a.u7>bestPct){bestPct=a.u7;best={sym:i.s,a,direction:'UNDER',barrier:7,pct:a.u7};}
+      // Require consolidating market AND higher threshold (68%) for recovery
+      if(!a.isCon) return;
+      if(a.o2>=68&&a.o2>bestPct){bestPct=a.o2;best={sym:i.s,a,direction:'OVER',barrier:2,pct:a.o2};}
+      if(a.u7>=68&&a.u7>bestPct){bestPct=a.u7;best={sym:i.s,a,direction:'UNDER',barrier:7,pct:a.u7};}
     }catch(e){}
   });
   return best;
@@ -1571,15 +1616,29 @@ function findBestMarket(){
   const tgt=document.getElementById('cfgIndex').value;
   if(tgt!=='AUTO'){
     const s=ST[tgt];if(!s||!s.conn||s.digits.length<30)return null;
-    try{const a=ana(tgt);if(a.score<minScore)return null;return{sym:tgt,a};}catch(e){return null;}
+    try{
+      const a=ana(tgt);
+      if(a.marketGrade==='SKIP'||a.marketGrade==='C') return null;
+      if(a.score<minScore) return null;
+      return{sym:tgt,a};
+    }catch(e){return null;}
   }
+  // AUTO: rank all markets, require Grade A or B + score >= minScore
   let best=null,bestScore=0;
   IDX.forEach(i=>{
     const s=ST[i.s];if(!s||!s.conn||s.digits.length<30)return;
-    try{const a=ana(i.s);const eff=a.score+(a.hotRecent?8:0);if(eff>bestScore){bestScore=eff;best={sym:i.s,a};}}catch(e){}
+    try{
+      const a=ana(i.s);
+      if(a.marketGrade==='SKIP'||a.marketGrade==='C') return;
+      // Grade A markets get a significant boost in ranking
+      const gradeBoost=a.marketGrade==='A'?20:0;
+      const eff=a.score+gradeBoost+(a.hotRecent?8:0);
+      if(eff>bestScore){bestScore=eff;best={sym:i.s,a};}
+    }catch(e){}
   });
   if(!best) return null;
-  const effBest=best.a.score+(best.a.hotRecent?8:0);
+  const gradeBoost=best.a.marketGrade==='A'?20:0;
+  const effBest=best.a.score+gradeBoost+(best.a.hotRecent?8:0);
   return effBest>=minScore?best:null;
 }
 
@@ -1709,7 +1768,7 @@ function aiTick(sym){
     if(a.hotRecent===false){setAIState('waiting');return;}
     aiLog('🎯 S1 | '+ix.n+' | DIFFERS d.'+barrierDigit
       +' ('+hotPct+'%) | $'+stake.toFixed(2)
-      +' Score:'+a.score+' Conf:'+conf.toFixed(2)+'x','info');
+      +' Score:'+a.score+' Grade:'+a.marketGrade+' Conf:'+conf.toFixed(2)+'x','info');
   } else {
     const recovery=findBestRecoveryMarket();
     if(!recovery){
@@ -2046,24 +2105,46 @@ function onContract(poc){
 }
 
 // ══ TRADE LOG ══
+let _totalTrades=0;
+function _ensureLogHeader(logId){
+  const log=document.getElementById(logId);if(!log)return;
+  if(!log.querySelector('.log-header')){
+    const h=document.createElement('div');
+    h.className='log-entry log-header';
+    h.innerHTML='<div>TIME</div><div>INDEX</div><div>TYPE</div><div>ENTRY</div><div>STAKE</div><div>RESULT</div><div>P&L</div>';
+    log.insertBefore(h,log.firstChild);
+  }
+}
 function addTradeLog(sym,type,digit,stake,profit,won,label){
   const ix=IDX.find(i=>i.s===sym);
   const now=new Date().toUTCString().slice(17,25);
-  const entryPrice=ST[sym]&&ST[sym].last?ST[sym].last.toFixed(2):'—';
+  const entryPrice=sym&&ST[sym]&&ST[sym].last?ST[sym].last.toFixed(2):'—';
   const entry=document.createElement('div');
   entry.className='log-entry '+(won?'win':profit===0?'pending':'loss');
   const pnlCls=profit>0?'pnl-pos':profit<0?'pnl-neg':'pnl-zero';
   entry.innerHTML=
-    '<div>'+now+'</div><div>'+(ix?ix.n:sym)+'</div><div>'+label+'</div>'+
+    '<div style="color:var(--dim);">'+now+'</div>'+
+    '<div style="font-weight:700;color:var(--text);">'+(ix?ix.n:(sym||'—'))+'</div>'+
+    '<div style="color:var(--accent);font-weight:600;">'+label+'</div>'+
     '<div style="color:var(--sub);">'+entryPrice+'</div>'+
-    '<div>$'+stake.toFixed(2)+'</div>'+
-    '<div style="color:'+(won?'var(--green)':'var(--red)')+';">'+(won?'WIN':'LOSS')+'</div>'+
-    '<div class="'+pnlCls+'">'+(profit>=0?'+':'')+'$'+profit.toFixed(2)+'</div>';
+    '<div style="color:var(--text);font-weight:700;">$'+parseFloat(stake||0).toFixed(2)+'</div>'+
+    '<div style="font-weight:800;color:'+(won?'#22c55e':'#ef4444')+';">'+(won?'✅WIN':'❌LOSS')+'</div>'+
+    '<div class="'+pnlCls+'">'+(profit>=0?'+':'')+'$'+parseFloat(profit||0).toFixed(2)+'</div>';
+  const src=AI.activeSource||'pioneer';
   const logMap={pioneer:'tradeLog',trend:'tradeLogTR'};
-  const logId=logMap[AI.activeSource||'pioneer']||'tradeLog';
+  const logId=logMap[src]||'tradeLog';
+  _ensureLogHeader(logId);
   const log=document.getElementById(logId);
   if(log){log.appendChild(entry);log.scrollTop=log.scrollHeight;}
-  if(logId!=='tradeLog'){const ml=document.getElementById('tradeLog');if(ml){const e2=entry.cloneNode(true);ml.appendChild(e2);ml.scrollTop=ml.scrollHeight;}}
+  if(logId!=='tradeLog'){
+    _ensureLogHeader('tradeLog');
+    const ml=document.getElementById('tradeLog');
+    if(ml){const e2=entry.cloneNode(true);ml.appendChild(e2);ml.scrollTop=ml.scrollHeight;}
+  }
+  // Update trade counter badge
+  _totalTrades++;
+  const tc=document.getElementById('tradeCount');
+  if(tc) tc.textContent=_totalTrades+(_totalTrades===1?' trade':' trades');
 }
 
 // ══ AI CONTROLS ══
@@ -2115,10 +2196,12 @@ function resetAI(){
   const eqSTR=document.getElementById('eqStatsTR');if(eqSTR){eqSTR.textContent='Now +0.00  Peak +0.00  Low +0.00';eqSTR.style.color='var(--sub)';}
   document.getElementById('curTrade').classList.remove('active');
   document.getElementById('curTrade').style.display='none';
-  document.getElementById('tradeLog').innerHTML=
-    '<div class="log-entry log-header"><div>TIME</div><div>INDEX</div><div>TYPE</div><div>ENTRY</div><div>STAKE</div><div>RESULT</div><div>P&L</div></div>';
-  document.getElementById('tradeLogTR').innerHTML=
-    '<div class="log-entry log-header"><div>TIME</div><div>INDEX</div><div>TYPE</div><div>ENTRY</div><div>STAKE</div><div>RESULT</div><div>P&L</div></div>';
+  document.getElementById('tradeLog').innerHTML='';
+  document.getElementById('tradeLogTR').innerHTML='';
+  _ensureLogHeader('tradeLog');
+  _ensureLogHeader('tradeLogTR');
+  _totalTrades=0;
+  const tc=document.getElementById('tradeCount');if(tc)tc.textContent='0 trades';
   for(let i=0;i<5;i++){const e=document.getElementById('lad'+i);if(e)e.classList.remove('won','lost','active');}
   for(let i=0;i<5;i++){const e=document.getElementById('tlad'+i);if(e)e.classList.remove('won','lost','active');}
   refreshLadder();refreshTrendLadder();
@@ -2255,12 +2338,38 @@ function updateDC(sym){
     const p=f/tot*100,hp=f/mxF*100;
     const bar=document.getElementById('DCB-'+sym+'-'+d);
     const lbl=document.getElementById('DCP-'+sym+'-'+d);
-    if(bar){bar.style.height=Math.max(2,hp*0.42)+'px';bar.style.background=p>13?'var(--green)':p<7&&f>0?'var(--red)':'var(--accent)';}
-    if(lbl)lbl.textContent=Math.round(p)+'%';
+    if(bar){
+      // Minimum 4px height so bars are always visible; scale up to 40px max
+      bar.style.height=Math.max(4, Math.round(hp*0.40))+'px';
+      // Color: green=hot (>13%), red=cold (<7%), yellow=neutral
+      const isHot=p>13, isCold=p<7&&f>0;
+      bar.style.background=isHot?'#22c55e':isCold?'#ef4444':'#eab308';
+      bar.style.boxShadow=isHot?'0 0 6px rgba(34,197,94,.6)':isCold?'0 0 4px rgba(239,68,68,.4)':'none';
+      bar.style.borderRadius='3px 3px 0 0';
+    }
+    if(lbl){
+      lbl.textContent=Math.round(p)+'%';
+      lbl.style.color=p>13?'#22c55e':p<7&&f>0?'#ef4444':'#eab308';
+      lbl.style.fontWeight=p>13?'700':'400';
+    }
   });
 }
 
-function initDC(){document.getElementById('DC').innerHTML=IDX.map(i=>'<div class="dcard"><div class="dtitle"><span>'+i.n+'</span><span style="font-size:8px;color:var(--sub);font-family:monospace" id="DCS-'+i.s+'">LOADING</span></div><div class="dbars">'+Array(10).fill(0).map((_,d)=>'<div class="dbw"><div class="dpct" id="DCP-'+i.s+'-'+d+'">0%</div><div class="dbar" id="DCB-'+i.s+'-'+d+'" style="height:2px;background:var(--accent)"></div><div class="ddig">'+d+'</div></div>').join('')+'</div></div>').join('');}
+function initDC(){
+  document.getElementById('DC').innerHTML=IDX.map(i=>
+    '<div class="dcard">'+
+    '<div class="dtitle"><span>'+i.n+'</span><span style="font-size:8px;color:var(--sub);font-family:monospace" id="DCS-'+i.s+'">LOADING</span></div>'+
+    '<div class="dbars">'+
+    Array(10).fill(0).map((_,d)=>
+      '<div class="dbw">'+
+      '<div class="dpct" id="DCP-'+i.s+'-'+d+'" style="color:#eab308;">0%</div>'+
+      '<div class="dbar" id="DCB-'+i.s+'-'+d+'" style="height:4px;background:#eab308;border-radius:3px 3px 0 0;transition:height .4s,background .3s;"></div>'+
+      '<div class="ddig">'+d+'</div>'+
+      '</div>'
+    ).join('')+
+    '</div></div>'
+  ).join('');
+}
 
 // ══ TREND DISPLAY — single canonical definition ══
 // FIX #4 (partial): This is the ONLY updateTrendDisplay — duplicate removed.
