@@ -261,6 +261,51 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .logout-btn{width:100%;padding:12px;background:rgba(255,23,68,.1);color:var(–loss);border:1px solid rgba(255,23,68,.25);border-radius:10px;font-size:12px;font-weight:700;font-family:var(–mono);cursor:pointer;margin-bottom:18px;}
 
 /* MODE DISP BAR */
+
+/* ACCUM */
+.accum-info{background:rgba(255,214,0,.05);border:1px solid rgba(255,214,0,.18);border-radius:8px;padding:7px 10px;margin-bottom:7px;font-family:var(–mono);font-size:9px;color:var(–sub);line-height:1.7;}
+.accum-live{background:var(–card2);border:1px solid rgba(255,214,0,.3);border-radius:9px;padding:8px 11px;margin-bottom:8px;}
+.accum-live-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.accum-val{font-family:var(–mono);font-size:20px;font-weight:800;color:var(–profit);}
+.accum-ticks{font-family:var(–mono);font-size:11px;color:var(–yellow);font-weight:700;}
+.accum-bar-wrap{width:100%;height:6px;background:var(–border);border-radius:3px;margin-top:6px;overflow:hidden;}
+.accum-bar{height:100%;background:linear-gradient(90deg,var(–green),var(–yellow));border-radius:3px;transition:width .3s;}
+.bb-visual{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:7px;margin-bottom:8px;}
+.bb-visual-hdr{font-family:var(–mono);font-size:8px;color:var(–sub);margin-bottom:4px;display:flex;justify-content:space-between;}
+
+/* INTELLIGENCE PANEL */
+.intel-panel{background:var(–card);border:1px solid var(–border);border-radius:12px;padding:0;margin:0 11px 8px;overflow:hidden;flex-shrink:0;transform:translateZ(0);will-change:auto;}
+.intel-hdr{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(–card2);border-bottom:1px solid var(–border);cursor:pointer;}
+.intel-hdr-l{display:flex;align-items:center;gap:7px;font-family:var(–mono);font-size:9px;font-weight:700;color:var(–accent);letter-spacing:1px;}
+.intel-body{display:none;flex-direction:column;}
+.intel-body.open{display:flex;}
+.intel-tabs{display:flex;border-bottom:1px solid var(–border);}
+.intel-tab{flex:1;padding:6px;font-family:var(–mono);font-size:8px;font-weight:600;text-align:center;cursor:pointer;color:var(–dim);border:none;background:none;border-bottom:2px solid transparent;transition:all .2s;}
+.intel-tab.active{color:var(–accent);border-bottom-color:var(–accent);}
+.intel-content{padding:10px 12px;max-height:260px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;}
+.intel-stat-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(–border);font-family:var(–mono);font-size:9px;}
+.intel-stat-row .k{color:var(–sub);}
+.intel-stat-row .v{font-weight:700;color:var(–text);}
+.intel-stat-row .v.good{color:var(–profit);}
+.intel-stat-row .v.bad{color:var(–loss);}
+.intel-stat-row .v.warn{color:var(–yellow);}
+.adapt-badge{display:inline-flex;padding:1px 6px;border-radius:4px;font-size:7px;font-weight:700;font-family:var(–mono);}
+.adapt-badge.learned{background:rgba(0,230,118,.12);color:var(–profit);}
+.adapt-badge.default{background:rgba(74,96,128,.12);color:var(–dim);}
+.chat-wrap{display:flex;flex-direction:column;gap:6px;-webkit-overflow-scrolling:touch;}
+.chat-msg{padding:7px 10px;border-radius:8px;font-size:11px;line-height:1.6;}
+.chat-msg.ai{background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.15);color:var(–text);}
+.chat-msg.user{background:var(–card2);border:1px solid var(–border);color:var(–sub);text-align:right;}
+.chat-msg.thinking{color:var(–dim);font-family:var(–mono);font-size:9px;animation:spulse 1s infinite;}
+.chat-input-row{display:flex;gap:6px;padding:8px 12px;border-top:1px solid var(–border);}
+.chat-input{flex:1;background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:7px 10px;font-family:var(–font);font-size:12px;color:var(–text);outline:none;}
+.chat-input:focus{border-color:var(–accent);}
+.chat-send{padding:7px 12px;background:var(–accent);border:none;border-radius:8px;color:#000;font-weight:700;font-size:11px;cursor:pointer;}
+.threshold-item{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(–border);}
+.threshold-item .tname{font-family:var(–mono);font-size:9px;color:var(–sub);}
+.threshold-item .tval{font-family:var(–mono);font-size:10px;font-weight:700;color:var(–accent);}
+.threshold-bar{width:60px;height:4px;background:var(–border);border-radius:2px;overflow:hidden;margin-left:6px;}
+.threshold-fill{height:100%;background:var(–green);border-radius:2px;}
 .minfo{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:6px 10px;margin-bottom:7px;font-family:var(–mono);font-size:9px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;}
 .minfo span{color:var(–sub);}
 .minfo strong{color:var(–text);font-weight:700;}
@@ -352,7 +397,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       <div class="cstat"><div class="cstat-l">TOTAL P&amp;L</div><div class="cstat-v" id="statPnl">+0.00</div></div>
     </div>
     <div class="ai-ctrl">
-      <div id="stateBadge" class="state-badge idle">&#9208; IDLE</div>
+      <div style="display:flex;align-items:center;gap:7px;">
+        <div id="stateBadge" class="state-badge idle">&#9208; IDLE</div>
+        <div id="confScore" style="display:none;flex-direction:column;align-items:center;padding:3px 8px;background:var(--card);border:1px solid var(--border);border-radius:8px;min-width:56px;"></div>
+      </div>
       <div class="ctrl-btns">
         <button class="btn start" id="startBtn">&#9654; START</button>
         <button class="btn stop" id="stopBtn" disabled>&#9632; STOP</button>
@@ -388,6 +436,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
     <div class="mchip" id="chipPower" onclick="setMode('power')">&#9889; POWER</div>
     <div class="mchip" id="chipBoyboy" onclick="setMode('boyboy')">&#128293; BOY BOY</div>
     <div class="mchip" id="chipEvenodd" onclick="setMode('evenodd')">&#9889; E/O</div>
+    <div class="mchip" id="chipAccum" onclick="setMode('accum')">&#128200; ACCUM</div>
   </div>
 
   <div style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;">
@@ -403,7 +452,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="cfg-blk"><div class="cfg-lbl">STOP LOSS ($)</div><input class="cfg-inp" id="piSL" type="number" value="50" min="1" step="1"/></div>
         <div class="cfg-blk"><div class="cfg-lbl">MIN SCORE (50)</div><input class="cfg-inp" id="piMinScore" type="number" value="50" min="40" max="85" step="5"/><div class="cfg-hint">Lower = more trades</div></div>
         <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">RECOVERY</div><select class="cfg-sel" id="piRecovery"><option value="O2U7">OVER2/UNDER7 (default)</option><option value="O1U8">OVER1/UNDER8</option><option value="O3U6">OVER3/UNDER6</option><option value="DIFF">DIFFERS</option></select></div>
-        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="piIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ100V">V100 1s</option></select></div>
+        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="piIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ15V">V15 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ30V">V30 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ90V">V90 1s</option><option value="1HZ100V">V100 1s</option></select></div>
       </div>
       <div class="lad-wrap"><div class="lad-hdr"><span>TRIGGER: last digit in [hot-1, hot, hot+1] window</span><span id="piExp" style="color:var(--loss)"></span></div><div class="lad-row" id="ladPI"></div></div>
       <div class="minfo">
@@ -431,7 +480,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="cfg-blk"><div class="cfg-lbl">MULT (2.1)</div><input class="cfg-inp" id="pwMult" type="number" value="2.1" min="1.5" max="10" step="0.1"/></div>
         <div class="cfg-blk"><div class="cfg-lbl">TAKE PROFIT</div><input class="cfg-inp" id="pwTP" type="number" value="20" min="1" step="1"/></div>
         <div class="cfg-blk"><div class="cfg-lbl">STOP LOSS</div><input class="cfg-inp" id="pwSL" type="number" value="30" min="1" step="1"/></div>
-        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="pwIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ100V">V100 1s</option></select></div>
+        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="pwIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ15V">V15 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ30V">V30 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ90V">V90 1s</option><option value="1HZ100V">V100 1s</option></select></div>
       </div>
       <div class="lad-wrap"><div class="lad-hdr"><span>S1: OV1/UN8 - S2-S5: OV2/UN7 x2.1 (full mart)</span><span id="pwExp" style="color:var(--loss)"></span></div><div class="lad-row" id="ladPW"></div></div>
       <div class="minfo">
@@ -457,7 +506,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="cfg-blk"><div class="cfg-lbl">TAKE PROFIT</div><input class="cfg-inp" id="bbTP" type="number" value="20" min="1" step="1"/></div>
         <div class="cfg-blk"><div class="cfg-lbl">STOP LOSS</div><input class="cfg-inp" id="bbSL" type="number" value="30" min="1" step="1"/></div>
         <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">RECOVERY CONTRACT</div><select class="cfg-sel" id="bbRec"><option value="O2U7">OVER2/UNDER7</option><option value="O1U8">OVER1/UNDER8</option><option value="O3U6">OVER3/UNDER6</option></select></div>
-        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="bbIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ100V">V100 1s</option></select></div>
+        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="bbIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ15V">V15 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ30V">V30 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ90V">V90 1s</option><option value="1HZ100V">V100 1s</option></select></div>
       </div>
       <div class="lad-wrap"><div class="lad-hdr"><span>S1: DIFF last digit - S2-S5: OV2/UN7 martingale</span><span id="bbExp" style="color:var(--loss)"></span></div><div class="lad-row" id="ladBB"></div></div>
       <div class="minfo">
@@ -489,7 +538,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
         <div class="cfg-blk"><div class="cfg-lbl">TAKE PROFIT</div><input class="cfg-inp" id="eoTP" type="number" value="20" min="1" step="1"/></div>
         <div class="cfg-blk"><div class="cfg-lbl">STOP LOSS</div><input class="cfg-inp" id="eoSL" type="number" value="30" min="1" step="1"/></div>
         <div class="cfg-blk"><div class="cfg-lbl">MIN LEAN % (57)</div><input class="cfg-inp" id="eoLean" type="number" value="57" min="54" max="70" step="1"/></div>
-        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="eoIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ100V">V100 1s</option></select></div>
+        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="eoIndex"><option value="AUTO">AUTO</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ15V">V15 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ30V">V30 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ90V">V90 1s</option><option value="1HZ100V">V100 1s</option></select></div>
       </div>
       <div class="lad-wrap"><div class="lad-hdr"><span>S1=BASE, S2-S5 standard martingale x2.1</span><span id="eoExp" style="color:var(--loss)"></span></div><div class="lad-row" id="ladEO"></div></div>
       <div class="minfo">
@@ -502,6 +551,51 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       <div class="log-hdr">EVEN/ODD LOG</div>
       <div id="logEO" class="ai-log"></div>
     </div>
+
+    <!-- ACCUMULATOR -->
+    <div id="mpAccum" class="mpage">
+      <div class="eq-card"><div class="eq-hdr"><span>&#128200; ACCUMULATOR</span><span id="eqStAC" style="font-family:var(--mono);font-size:8px;color:var(--sub)">+0.00</span></div><canvas id="eqAC" style="width:100%;height:62px;display:block;"></canvas></div>
+      <div class="accum-info">
+        <strong style="color:var(--yellow)">HOW IT WORKS</strong> - Opens accumulator when BB is contracting + RSI neutral (40-60) + price consolidating. Auto-cashout after N ticks. Never lets it run to barrier.
+      </div>
+      <div id="accumLive" class="accum-live" style="display:none;">
+        <div class="accum-live-row">
+          <div><div style="font-size:8px;color:var(--sub);font-family:var(--mono);">CURRENT VALUE</div><div class="accum-val" id="accumVal">$0.00</div></div>
+          <div><div style="font-size:8px;color:var(--sub);font-family:var(--mono);">TICKS</div><div class="accum-ticks" id="accumTicksD">0 / 5</div></div>
+          <div><div style="font-size:8px;color:var(--sub);font-family:var(--mono);">PROFIT</div><div style="font-family:var(--mono);font-size:14px;font-weight:800;" id="accumProfit">+$0.00</div></div>
+          <button id="accumCashoutBtn" style="padding:7px 14px;background:#1b5e20;color:#fff;border:none;border-radius:8px;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;">CASHOUT NOW</button>
+        </div>
+        <div class="accum-bar-wrap"><div class="accum-bar" id="accumBar" style="width:0%"></div></div>
+      </div>
+      <div class="bb-visual">
+        <div class="bb-visual-hdr"><span>BB + RSI SIGNAL</span><span id="accumSigInfo" style="color:var(--dim)">--</span></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;">
+          <div class="cstat"><div class="cstat-l">BB WIDTH</div><div class="cstat-v" id="accumBBW" style="font-size:11px;color:var(--dim)">--</div></div>
+          <div class="cstat"><div class="cstat-l">BB TREND</div><div class="cstat-v" id="accumBBT" style="font-size:11px;color:var(--dim)">--</div></div>
+          <div class="cstat"><div class="cstat-l">RSI</div><div class="cstat-v" id="accumRSI" style="font-size:11px;color:var(--dim)">--</div></div>
+          <div class="cstat"><div class="cstat-l">MARKET</div><div class="cstat-v" id="accumMkt" style="font-size:10px">--</div></div>
+        </div>
+      </div>
+      <div class="cfg-tog" onclick="toggleCfg(this)">&#9881; CONFIG <span>&#9660;</span></div>
+      <div class="cfg-grid">
+        <div class="cfg-blk"><div class="cfg-lbl">STAKE ($)</div><input class="cfg-inp" id="acStake" type="number" value="5" min="1" step="1"/></div>
+        <div class="cfg-blk"><div class="cfg-lbl">GROWTH RATE</div><select class="cfg-sel" id="acGrowth"><option value="0.5">0.5% (safest)</option><option value="1" selected>1%</option><option value="2">2%</option><option value="3">3%</option><option value="5">5% (riskiest)</option></select></div>
+        <div class="cfg-blk"><div class="cfg-lbl">AUTO-CASHOUT TICKS</div><input class="cfg-inp" id="acTicks" type="number" value="5" min="2" max="20" step="1"/><div class="cfg-hint">5 ticks @ 1% = ~5.1% profit</div></div>
+        <div class="cfg-blk"><div class="cfg-lbl">TAKE PROFIT ($)</div><input class="cfg-inp" id="acTP" type="number" value="10" min="1" step="1"/></div>
+        <div class="cfg-blk"><div class="cfg-lbl">STOP LOSS ($)</div><input class="cfg-inp" id="acSL" type="number" value="20" min="1" step="1"/></div>
+        <div class="cfg-blk"><div class="cfg-lbl">RSI NEUTRAL ZONE</div><select class="cfg-sel" id="acRSIZone"><option value="strict">Strict 45-55</option><option value="normal" selected>Normal 40-60</option><option value="wide">Wide 35-65</option></select></div>
+        <div class="cfg-blk" style="grid-column:1/-1"><div class="cfg-lbl">INDEX</div><select class="cfg-sel" id="acIndex"><option value="AUTO">AUTO (best BB signal)</option><option value="R_10">V10</option><option value="R_25">V25</option><option value="R_50">V50</option><option value="R_75">V75</option><option value="R_100">V100</option><option value="1HZ10V">V10 1s</option><option value="1HZ15V">V15 1s</option><option value="1HZ25V">V25 1s</option><option value="1HZ30V">V30 1s</option><option value="1HZ50V">V50 1s</option><option value="1HZ75V">V75 1s</option><option value="1HZ90V">V90 1s</option><option value="1HZ100V">V100 1s</option></select></div>
+      </div>
+      <div class="minfo">
+        <span>SESSION RUNS <strong id="acRuns" style="color:var(--accent)">0</strong></span>
+        <span>PROJ/RUN <strong id="acProjProfit" style="color:var(--profit)">$0.00</strong></span>
+        <span>NEEDED <strong id="acNeeded" style="color:var(--sub)">--</strong></span>
+        <span id="acRunning" style="color:var(--dim)">&#9208; IDLE</span>
+      </div>
+      <div class="log-hdr">ACCUMULATOR LOG</div>
+      <div id="logAC" class="ai-log"></div>
+    </div>
+    <!-- END ACCUMULATOR -->
 
   </div>
 
@@ -522,6 +616,49 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
       <tbody id="tlogBody"></tbody>
     </table>
   </div>
+
+  <!-- INTELLIGENCE PANEL -->
+  <div class="intel-panel" id="intelPanel">
+    <div class="intel-hdr" onclick="toggleIntel()">
+      <div class="intel-hdr-l">
+        <span>&#129302;</span>
+        <span>AI INTELLIGENCE</span>
+        <span id="intelBadge" class="adapt-badge default">DEFAULT</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span id="intelWR" style="font-family:var(--mono);font-size:9px;color:var(--sub);">--% win rate</span>
+        <span id="intelChevron" style="color:var(--dim);font-size:10px;">&#9660;</span>
+      </div>
+    </div>
+    <div class="intel-body" id="intelBody">
+      <div class="intel-tabs">
+        <button class="intel-tab active" id="itab-stats" onclick="switchIntelTab('stats')">STATS</button>
+        <button class="intel-tab" id="itab-adapt" onclick="switchIntelTab('adapt')">ADAPT</button>
+        <button class="intel-tab" id="itab-claude" onclick="switchIntelTab('claude')">ASK AI</button>
+      </div>
+      <!-- STATS TAB -->
+      <div class="intel-content" id="icontent-stats">
+        <div id="intelStatsList"></div>
+      </div>
+      <!-- ADAPT TAB -->
+      <div class="intel-content" id="icontent-adapt" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="font-size:9px;color:var(--sub);font-family:var(--mono);line-height:1.6;">Adapts from your trade history. 30+ trades per mode for thresholds, 500+ for neural net.</div>
+          <button id="trainNowBtn" onclick="trainAllModels()" style="padding:4px 10px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.3);color:var(--accent);border-radius:6px;font-family:var(--mono);font-size:8px;font-weight:700;cursor:pointer;white-space:nowrap;margin-left:8px;">TRAIN</button>
+        </div>
+        <div id="intelAdaptList"></div>
+      </div>
+      <!-- CLAUDE AI TAB -->
+      <div class="intel-content" id="icontent-claude" style="display:none;padding:0;">
+        <div id="chatMessages" class="chat-wrap" style="padding:10px 12px;min-height:80px;max-height:200px;overflow-y:auto;"></div>
+      </div>
+      <div id="chatInputArea" class="chat-input-row" style="display:none;">
+        <input id="chatInput" class="chat-input" placeholder="Ask about your trading performance..." />
+        <button class="chat-send" id="chatSendBtn">&#10148;</button>
+      </div>
+    </div>
+  </div>
+  <!-- END INTELLIGENCE PANEL -->
 
 </div>
 
@@ -575,7 +712,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 
 <script>
 // STATE
-var IDX=[{s:'R_10',n:'V10',v:10,dp:3,mt:60,ts:1},{s:'R_25',n:'V25',v:25,dp:3,mt:60,ts:1},{s:'R_50',n:'V50',v:50,dp:4,mt:60,ts:1},{s:'R_75',n:'V75',v:75,dp:4,mt:60,ts:1},{s:'R_100',n:'V100',v:100,dp:2,mt:60,ts:1},{s:'1HZ10V',n:'V10 1s',v:10,dp:3,mt:120,ts:2},{s:'1HZ25V',n:'V25 1s',v:25,dp:3,mt:120,ts:2},{s:'1HZ50V',n:'V50 1s',v:50,dp:4,mt:120,ts:2},{s:'1HZ75V',n:'V75 1s',v:75,dp:4,mt:120,ts:2},{s:'1HZ100V',n:'V100 1s',v:100,dp:2,mt:120,ts:2}];
+var IDX=[{s:'R_10',n:'V10',v:10,dp:3,mt:60,ts:1},{s:'R_25',n:'V25',v:25,dp:3,mt:60,ts:1},{s:'R_50',n:'V50',v:50,dp:4,mt:60,ts:1},{s:'R_75',n:'V75',v:75,dp:4,mt:60,ts:1},{s:'R_100',n:'V100',v:100,dp:2,mt:60,ts:1},{s:'1HZ10V',n:'V10 1s',v:10,dp:3,mt:120,ts:2},{s:'1HZ15V',n:'V15 1s',v:15,dp:3,mt:120,ts:2},{s:'1HZ25V',n:'V25 1s',v:25,dp:3,mt:120,ts:2},{s:'1HZ30V',n:'V30 1s',v:30,dp:4,mt:120,ts:2},{s:'1HZ50V',n:'V50 1s',v:50,dp:4,mt:120,ts:2},{s:'1HZ75V',n:'V75 1s',v:75,dp:4,mt:120,ts:2},{s:'1HZ90V',n:'V90 1s',v:90,dp:4,mt:120,ts:2},{s:'1HZ100V',n:'V100 1s',v:100,dp:2,mt:120,ts:2}];
 var ST={};
 IDX.forEach(function(ix){ST[ix.s]={prices:[],digits:[],freq:new Array(10).fill(0),last:null,conn:false,ticks:0,tickTimes:[],db:ix.ts===2?200:100,tickSpeed:0};});
 var ws=null,rtimer=null,userToken=null,isGuest=false,lastTradeTime=0,totalTicks=0;
@@ -590,9 +727,9 @@ var AI={
   piLastWait:'',piLastWaitT:0,piTrigLogT:0,
   pwStep:0,pwDir:null,pwPrev:null,pwWaitSince:0,pwPauseUntil:0,pwLastLost:null,
   bbStep:0,bbDir:null,bbLastDig:null,bbActiveSym:null,bbPauseUntil:0,
-  eoStep:0,eoDir:null,eoConfirm:0,eoLastCand:null,eoWaitSince:0,eoPauseUntil:0
+  eoStep:0,eoDir:null,eoConfirm:0,eoLastCand:null,eoWaitSince:0,eoPauseUntil:0,acActiveCid:null,acTicks:0,acEntryStake:0,acPauseUntil:0,acWaitSince:0,acRuns:0,_lastPiScore:null,_lastHotPct:null,_lastRSI:null,_lastBBW:null,_lastLean:null,_lastTicksSurvived:null,_lastColdPct:null
 };
-var EQ={pi:[0],pw:[0],bb:[0],eo:[0],piS:0,pwS:0,bbS:0,eoS:0};
+var EQ={pi:[0],pw:[0],bb:[0],eo:[0],ac:[0],piS:0,pwS:0,bbS:0,eoS:0,acS:0};
 var SIL={cal:false,calTicks:0,calTarget:50,calData:{},baseline:{e:3.1},thresh:{eGate:2.95},regime:'calibrating',prevR:'calibrating',dd:0,evRec:{}};
 IDX.forEach(function(ix){SIL.evRec[ix.s]=[];SIL.calData[ix.s]={digits:[],entropies:[]};});
 var _trades=0,_tPnl=0,_anaCache={};
@@ -788,7 +925,7 @@ function findPW(minScore,tgt,lastLost){
     var bDir=cold01<=cold89?'OVER':'UNDER';
     var coldPct=bDir==='OVER'?cold01:cold89;
     // Cold threshold: below 18% (expected 20%) - relaxed for more signals
-    if(coldPct>18)return null;
+    if(coldPct>getAdaptedThreshold('power','coldPct',18))return null;
     // Confirm cold in recent 20 ticks
     var r20=s.digits.slice(-20);
     var r20cold=bDir==='OVER'
@@ -906,7 +1043,7 @@ function drawEq(canvasId,pts,statId){
   ctx.beginPath();pts.forEach(function(v,i){var x=i/(pts.length-1)*W,y=toY(v);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.stroke();
   var se=g(statId);if(se){var pk=Math.max.apply(null,pts),tr=Math.min.apply(null,pts);se.textContent=(last>=0?'+':'')+last.toFixed(2)+'  pk:'+(pk>=0?'+':'')+pk.toFixed(2);se.style.color=last>=0?'var(--profit)':'var(--loss)';}
 }
-function drawAll(){drawEq('eqPI',EQ.pi,'eqStPI');drawEq('eqPW',EQ.pw,'eqStPW');drawEq('eqBB',EQ.bb,'eqStBB');drawEq('eqEO',EQ.eo,'eqStEO');}
+function drawAll(){drawEq('eqPI',EQ.pi,'eqStPI');drawEq('eqPW',EQ.pw,'eqStPW');drawEq('eqBB',EQ.bb,'eqStBB');drawEq('eqEO',EQ.eo,'eqStEO');drawEq('eqAC',EQ.ac,'eqStAC');}
 
 // AI TICKS
 function piTick(sym){
@@ -919,7 +1056,7 @@ function piTick(sym){
   if(EQ.piS<=-sl){log('pi','SL hit','danger');stopMode();return;}
   if(EQ.piS>=tp){log('pi','TP hit!','success');stopMode();return;}
   setState('scanning');
-  var minScore=parseInt(gv('piMinScore'))||50;
+  var minScore=getAdaptedThreshold('pioneer','minScore',parseInt(gv('piMinScore'))||50);
   if(AI.piStep===0){
     var mkt=findBest(minScore,gv('piIndex')||'AUTO');
     if(!mkt){
@@ -943,9 +1080,14 @@ function piTick(sym){
       var nowT=Date.now();if(!AI.piTrigLogT||nowT-AI.piTrigLogT>12000){log('pi','Watching: hot='+hotD+' window=['+below+','+hotD+','+above+'] last='+lastD+(hotInLast5?'':' [hot absent last 5]'),'warn');AI.piTrigLogT=nowT;}
       setState('waiting');return;
     }
-    var stake=Math.max(0.35,Math.round(piStake(0,mkt.a.score)*silDDMult()*100)/100);
+    var _piBaseStake=Math.max(0.35,Math.round(piStake(0,mkt.a.score)*silDDMult()*100)/100);
+    var _piConf=getConfidence('pioneer',{entryScore:mkt.a.score,hotPct:mkt.a.rawHP});
+    showConfidence('pioneer',_piConf);
+    var stake=confStake(_piBaseStake,_piConf);
+    if(stake===0){waitLog('[ML] Pioneer conf too low ('+_piConf+'%) - skip');setState('waiting');return;}
     var ix=IDX.find(function(i){return i.s===mkt.sym;});
     log('pi','S1 | '+ix.n+' | DIFF d.'+hotD+' | trigger='+lastD+' window=['+below+','+hotD+','+above+'] | $'+stake.toFixed(2)+' '+mkt.a.grade,'info');
+    AI._lastPiScore=mkt.a.score;AI._lastHotPct=Math.round(mkt.a.rawHP*10)/10;AI._lastRSI=null;AI._lastBBW=null;AI._lastLean=null;AI._lastTicksSurvived=null;
     lastTradeTime=Date.now();
     placeTrade(mkt.sym,'DIGITDIFF',stake,hotD,'DIFF d.'+hotD,'pioneer');
   } else {
@@ -999,9 +1141,13 @@ function pwTick(){
     var uEl=g('pwU');if(uEl)uEl.textContent=mkt.r20cold.toFixed(1)+'%';
     var mEl=g('pwMkt');if(mEl){var ixm=IDX.find(function(i){return i.s===mkt.sym;});if(ixm)mEl.textContent=ixm.n;}
     var base=parseFloat(gv('pwStake'))||1;
-    var stake=Math.max(0.35,Math.round(base*silDDMult()*100)/100);
+    var _pwBase=Math.max(0.35,Math.round(base*silDDMult()*100)/100);
+    var _pwConf=getConfidence('power',{coldPct:mkt.coldPct,r20cold:mkt.r20cold});
+    showConfidence('power',_pwConf);
+    var stake=confStake(_pwBase,_pwConf);
+    if(stake===0){log('pw','[ML] Power conf '+(_pwConf||0)+'% too low - skip','warn');setState('waiting');return;}
     var ix=IDX.find(function(i){return i.s===mkt.sym;});
-    log('pw','PW S1 | '+ix.n+' | '+mkt.lbl+' cold:'+mkt.coldPct+'% r20:'+mkt.r20cold+'% | $'+stake.toFixed(2),'info');
+    log('pw','PW S1 | '+ix.n+' | '+mkt.lbl+' cold:'+mkt.coldPct+'% conf:'+(_pwConf||'--')+'% | $'+stake.toFixed(2),'info');
     renderLadder('pw');ladState('pw',0,true);
     lastTradeTime=Date.now();
     placeTrade(mkt.sym,mkt.code,stake,mkt.barrier,mkt.lbl,'power');
@@ -1043,6 +1189,7 @@ function bbTick(sym){
     var ix4=IDX.find(function(i){return i.s===activeSym;});
     var stake=parseFloat(gv('bbStake'))||1;
     log('bb','BB S1 | '+ix4.n+' | DIFF d.'+ld+' | $'+stake.toFixed(2),'info');
+    AI._lastPiScore=null;AI._lastHotPct=null;AI._lastRSI=null;AI._lastBBW=null;AI._lastLean=null;AI._lastTicksSurvived=null;
     ladState('bb',0,true);lastTradeTime=now;
     placeTrade(activeSym,'DIGITDIFF',stake,ld,'DIFF d.'+ld,'boyboy');
   } else {
@@ -1083,7 +1230,7 @@ function eoTick(){
   if(EQ.eoS>=tp){log('eo','EO TP hit','success');stopMode();return;}
   if(EQ.eoS<=-sl){log('eo','EO SL hit','danger');stopMode();return;}
   setState('scanning');
-  var minLean=parseFloat(gv('eoLean'))||57;
+  var minLean=getAdaptedThreshold('evenodd','minLean',parseFloat(gv('eoLean'))||57);
   var mkt=findEO(minLean,gv('eoIndex')||'AUTO');
   if(!mkt){
     if(AI.eoWaitSince===0)AI.eoWaitSince=Date.now();
@@ -1105,9 +1252,14 @@ function eoTick(){
   AI.eoDir=mkt.dir; // re-scan direction each step - no lock
   var ix7=IDX.find(function(i){return i.s===mkt.sym;});
   var base4=parseFloat(gv('eoStake'))||1,mult4=parseFloat(gv('eoMult'))||2.1;
-  var stake4=calcStake(AI.eoStep,base4,mult4);
+  var _eoBaseStake=calcStake(AI.eoStep,base4,mult4);
+  var _eoConf=AI.eoStep===0?getConfidence('evenodd',{lean:mkt.lean,delta:mkt.fresh.delta,chi2sig:1}):null;
+  if(AI.eoStep===0){showConfidence('evenodd',_eoConf);}
+  var stake4=AI.eoStep===0?confStake(_eoBaseStake,_eoConf):_eoBaseStake;
+  if(stake4===0){log('eo','[ML] EO conf too low ('+_eoConf+'%) - skip','warn');setState('waiting');return;}
   var code4=AI.eoDir==='EVEN'?'DIGITEVEN':'DIGITODD';
-  log('eo','EO S'+(AI.eoStep+1)+' | '+ix7.n+' | '+AI.eoDir+' '+mkt.lean.toFixed(1)+'% d:'+mkt.fresh.delta+'% | $'+stake4.toFixed(2),'info');
+  log('eo','EO S'+(AI.eoStep+1)+' | '+ix7.n+' | '+AI.eoDir+' '+mkt.lean.toFixed(1)+'% d:'+mkt.fresh.delta+'% conf:'+(_eoConf||'--')+'% | $'+stake4.toFixed(2),'info');
+  if(AI.eoStep===0)AI._lastLean=mkt.lean;
   renderLadder('eo');ladState('eo',AI.eoStep,true);upEO();
   lastTradeTime=Date.now();
   placeTrade(mkt.sym,code4,stake4,null,AI.eoDir,'evenodd');
@@ -1141,14 +1293,27 @@ function placeTrade(sym,code,stake,barrier,typeLabel,source){
 }
 function onBuy(msg){
   if(!AI.pendingResult)return;
-  if(msg.error){clearTimeout(AI.tradeTimer);log('pi','Buy error: '+(msg.error.message||msg.error.code),'danger');AI.inTrade=false;AI.pendingResult=false;if(msg.error.code==='InsufficientBalance')stopMode();setState(AI.running?'scanning':'idle');return;}
+  if(msg.error){clearTimeout(AI.tradeTimer);var errMsg=msg.error.message||msg.error.code;log('pi','Buy error: '+errMsg,'danger');if(AI.activeSource==='accum')log('ac','ACCUM buy failed: '+errMsg,'danger');AI.inTrade=false;AI.pendingResult=false;AI.acActiveCid=null;if(msg.error.code==='InsufficientBalance')stopMode();setState(AI.running?'scanning':'idle');return;}
   if(!msg.buy)return;
   AI.activeCid=msg.buy.contract_id;
   sel('ctStatus','ACTIVE');g('ctStatus').style.color='var(--green)';
+  if(AI.activeSource==='accum'){
+    AI.acActiveCid=msg.buy.contract_id;
+    AI.pendingResult=false;
+    AI.inTrade=false; // accum manages its own state via acActiveCid
+    log('ac','Contract #'+AI.acActiveCid+' open - monitoring ticks...','success');
+    sel('ctStatus','LIVE');g('ctStatus').style.color='var(--profit)';
+  }
   ws.send(JSON.stringify({proposal_open_contract:1,contract_id:AI.activeCid,subscribe:1}));
 }
 function onContract(poc){
-  if(!poc||poc.contract_id!==AI.activeCid)return;
+  if(!poc)return;
+  // Route accumulator updates
+  if(AI.acActiveCid&&poc.contract_id===AI.acActiveCid){
+    if(poc.status==='open'||!poc.status){onAccumUpdate(poc);return;}
+    else{onAccumClosed(poc);return;}
+  }
+  if(poc.contract_id!==AI.activeCid)return;
   if(poc.status==='open')return;
   clearTimeout(AI.tradeTimer);clearTimeout(AI.lateTimer);
   AI.activeCid=null;var src=AI.activeSource||'pioneer';AI.pendingResult=false;AI.inTrade=false;
@@ -1158,6 +1323,7 @@ function onContract(poc){
   AI.totalPnl=Math.round((AI.totalPnl+profit)*100)/100;AI.sessPnl=Math.round((AI.sessPnl+profit)*100)/100;
   if(won){AI.wins++;AI.consecLoss=0;}else{AI.losses++;AI.consecLoss++;}
   addTlog(AI.activeSym,AI.activeType,stake,profit,won,src);
+  recordTrade(AI.activeSym,src,profit,won,{entryScore:AI._lastPiScore,hotPct:AI._lastHotPct,coldPct:AI._lastColdPct,rsi:AI._lastRSI,bbw:AI._lastBBW,lean:AI._lastLean,ticksSurvived:AI._lastTicksSurvived});
   handlePost(src,profit,won);
   upStats();drawAll();silBar();
   setTimeout(function(){var ct=g('ctBar');if(ct)ct.className='ct';if(AI.consecLoss>=5)circuitBreak(src);else if(AI.running)setState('scanning');},400);
@@ -1224,7 +1390,7 @@ function upEO(){
 }
 function upStats(){
   var tot=AI.wins+AI.losses;
-  var sess=AI.mode==='power'?EQ.pwS:AI.mode==='boyboy'?EQ.bbS:AI.mode==='evenodd'?EQ.eoS:EQ.piS;
+  var sess=AI.mode==='power'?EQ.pwS:AI.mode==='boyboy'?EQ.bbS:AI.mode==='evenodd'?EQ.eoS:AI.mode==='accum'?EQ.acS:EQ.piS;
   var sp=g('sessPnl');if(sp){sp.textContent=(sess>=0?'+':'')+sess.toFixed(2);sp.style.color=sess>=0?'var(--profit)':'var(--loss)';}
   sel('sessPnlSub',tot+' trades');sel('statW',AI.wins);sel('statL',AI.losses);
   sel('statWR',tot>0?Math.round(AI.wins/tot*100)+'%':'--');
@@ -1232,6 +1398,7 @@ function upStats(){
   var ap=g('acctPnl');if(ap){ap.textContent=(AI.totalPnl>=0?'+':'')+AI.totalPnl.toFixed(2);ap.style.color=AI.totalPnl>=0?'var(--profit)':'var(--loss)';}
   sel('acctWR',tot>0?Math.round(AI.wins/tot*100)+'%':'--');sel('acctW',AI.wins);sel('acctL',AI.losses);
   if(AI.mode==='pioneer')upPI();else if(AI.mode==='power')upPW();else if(AI.mode==='boyboy')upBB();else if(AI.mode==='evenodd')upEO();
+  updateIntelPanel();
 }
 
 // TRADE LOG
@@ -1257,6 +1424,7 @@ function startAI(){
   g('startBtn').disabled=true;g('stopBtn').disabled=false;disableCfg(true);
   setState('scanning');
   log('pi',AI.mode.toUpperCase()+' STARTED - SIL calibrating...','success');
+  if(AI.mode==='accum')updateAccumProjection();
   var ruMap={power:'pwRunning',boyboy:'bbRunning',evenodd:'eoRunning'};
   var rid=ruMap[AI.mode];var re=g(rid);if(re){re.textContent='RUNNING';re.style.color='var(--green)';}
 }
@@ -1271,8 +1439,8 @@ function resetAll(){
   AI.piStep=0;AI.piDir=null;AI.piConfirm=0;AI.piLastCand=null;AI.piFireAt=0;AI.piWaitSince=0;AI.piPauseUntil=0;AI.piNoSigPause=0;AI.piTrigLogT=0;
   AI.pwStep=0;AI.pwDir=null;AI.pwPrev=null;AI.pwWaitSince=0;AI.pwPauseUntil=0;AI.pwLastLost=null;
   AI.bbStep=0;AI.bbDir=null;AI.bbLastDig=null;AI.bbPauseUntil=0;
-  AI.eoStep=0;AI.eoDir=null;AI.eoConfirm=0;AI.eoLastCand=null;AI.eoWaitSince=0;AI.eoPauseUntil=0;
-  EQ.pi=[0];EQ.pw=[0];EQ.bb=[0];EQ.eo=[0];EQ.piS=0;EQ.pwS=0;EQ.bbS=0;EQ.eoS=0;
+  AI.eoStep=0;AI.eoDir=null;AI.eoConfirm=0;AI.eoLastCand=null;AI.eoWaitSince=0;AI.eoPauseUntil=0;AI.acActiveCid=null;AI.acTicks=0;AI.acEntryStake=0;AI.acPauseUntil=0;AI.acWaitSince=0;AI.acRuns=0;
+  EQ.pi=[0];EQ.pw=[0];EQ.bb=[0];EQ.eo=[0];EQ.ac=[0];EQ.piS=0;EQ.pwS=0;EQ.bbS=0;EQ.eoS=0;EQ.acS=0;
   _trades=0;_tPnl=0;
   g('tlogBody').innerHTML='';sel('tlogCnt','0 trades');
   var tl=g('tlogPnl');if(tl){tl.textContent='P&L: --';tl.style.color='var(--sub)';}
@@ -1314,8 +1482,8 @@ function toggleCfg(el){var grid=el.nextElementSibling;if(grid)grid.style.display
 // MODE / NAV
 function setMode(m){
   if(AI.running)return;AI.mode=m;
-  ['pioneer','power','boyboy','evenodd'].forEach(function(x){var el=g('chip'+x.charAt(0).toUpperCase()+x.slice(1));if(el)el.classList.toggle('active',x===m);});
-  var pMap={pioneer:'mpPioneer',power:'mpPower',boyboy:'mpBoyboy',evenodd:'mpEvenodd'};
+  ['pioneer','power','boyboy','evenodd','accum'].forEach(function(x){var el=g('chip'+x.charAt(0).toUpperCase()+x.slice(1));if(el)el.classList.toggle('active',x===m);});
+  var pMap={pioneer:'mpPioneer',power:'mpPower',boyboy:'mpBoyboy',evenodd:'mpEvenodd',accum:'mpAccum'};
   Object.values(pMap).forEach(function(id){var el=g(id);if(el){el.classList.remove('active');el.style.display='none';}});
   var active=g(pMap[m]);if(active){active.classList.add('active');active.style.display='flex';}
 }
@@ -1424,6 +1592,7 @@ function onTick(tk){
     else if(AI.mode==='power')pwTick();
     else if(AI.mode==='boyboy')bbTick(tk.symbol);
     else if(AI.mode==='evenodd')eoTick();
+    else if(AI.mode==='accum')accumLiveTick(tk.symbol);
   }
 }
 
@@ -1459,6 +1628,8 @@ function launchDash(auth){
   }
   AI.piBase=parseFloat(gv('piStake'))||5;
   initAna();initDC();
+  initIntelligence();
+  setTimeout(initML, 1000);
   ['pi','pw','bb','eo'].forEach(function(m){renderLadder(m);});
   drawAll();silBar();startConn();
   setInterval(function(){var n=new Date();sel('CLK',n.toUTCString().slice(17,25));},1000);
@@ -1475,6 +1646,1080 @@ function doLogout(){
 }
 function toggleTheme(){var isDay=document.documentElement.classList.toggle('day');var btn=g('themeBtn');if(btn)btn.innerHTML=isDay?'&#9790;':'&#9728;';drawAll();}
 
+
+// ── ACCUMULATOR ENGINE ───────────────────────────
+// BB + RSI signal, auto-cashout after N ticks
+// RSI calculation
+function calcRSI(prices, period) {
+  if (!prices || prices.length < period + 1) return 50;
+  var gains = 0, losses = 0;
+  for (var i = prices.length - period; i < prices.length; i++) {
+    var diff = prices[i] - prices[i - 1];
+    if (diff > 0) gains += diff; else losses -= diff;
+  }
+  var avgGain = gains / period, avgLoss = losses / period;
+  if (avgLoss === 0) return 100;
+  var rs = avgGain / avgLoss;
+  return Math.round((100 - 100 / (1 + rs)) * 10) / 10;
+}
+
+// Bollinger Bands calculation
+function calcBB(prices, period, mult) {
+  if (!prices || prices.length < period) return null;
+  var slice = prices.slice(-period);
+  var mean = slice.reduce(function(a, b) { return a + b; }, 0) / period;
+  var variance = slice.reduce(function(a, b) { return a + (b - mean) * (b - mean); }, 0) / period;
+  var sd = Math.sqrt(variance);
+  return {
+    upper: mean + mult * sd,
+    lower: mean - mult * sd,
+    mid: mean,
+    width: (2 * mult * sd) / mean * 100, // BB width as % of price
+    sd: sd
+  };
+}
+
+// Find best market for accumulator
+function findAccumMarket(tgt) {
+  var rsiZone = gv('acRSIZone') || 'normal';
+  var rsiLow = rsiZone === 'strict' ? 45 : rsiZone === 'wide' ? 35 : 40;
+  var rsiHigh = rsiZone === 'strict' ? 55 : rsiZone === 'wide' ? 65 : 60;
+
+  var check = function(sym) {
+    var s = ST[sym], ix = IDX.find(function(i) { return i.s === sym; });
+    if (!s || !s.conn || s.prices.length < 30) return null;
+    var prices = s.prices;
+    var rsi = calcRSI(prices, 14);
+    // RSI must be in neutral zone
+    if (rsi < rsiLow || rsi > rsiHigh) return null;
+    var bb20 = calcBB(prices, 20, 2);
+    var bb10 = calcBB(prices, 10, 2);
+    if (!bb20 || !bb10) return null;
+    // BB must be contracting: current width < recent width
+    var bbContracting = bb10.width < bb20.width;
+    if (!bbContracting) return null;
+    // Price must be within inner 60% of BB range (not near bands)
+    var last = prices[prices.length - 1];
+    var range = bb20.upper - bb20.lower;
+    var posInBand = range > 0 ? (last - bb20.lower) / range : 0.5;
+    if (posInBand < 0.20 || posInBand > 0.80) return null;
+    // Low tick volatility: last 5 ticks range should be small
+    var l5 = prices.slice(-5);
+    var l5range = Math.max.apply(null, l5) - Math.min.apply(null, l5);
+    var volatilityPct = l5range / last * 100;
+    if (volatilityPct > 0.05) return null; // too volatile for accumulator
+    // Score: tighter BB + more neutral RSI = better
+    var rsiNeutral = 50 - Math.abs(rsi - 50); // 0-25, higher is better
+    var score = (bb20.width > 0 ? (1 / bb20.width) * 10 : 0) + rsiNeutral * 0.5 + (bb20.width - bb10.width) * 20;
+    return {
+      sym: sym, rsi: rsi, bbWidth: Math.round(bb20.width * 1000) / 1000,
+      bbContracting: bbContracting, posInBand: Math.round(posInBand * 100),
+      score: score, bb20: bb20
+    };
+  };
+
+  if (tgt && tgt !== 'AUTO') { try { return check(tgt); } catch(e) { return null; } }
+  var best = null, bs = 0;
+  IDX.forEach(function(ix) {
+    try { var r = check(ix.s); if (r && r.score > bs) { bs = r.score; best = r; } } catch(e) {}
+  });
+  return best;
+}
+
+// Update projected profit display
+function updateAccumProjection() {
+  var stake = parseFloat(gv('acStake')) || 5;
+  var growth = parseFloat(gv('acGrowth')) || 1;
+  var ticks = parseInt(gv('acTicks')) || 5;
+  var tp = parseFloat(gv('acTP')) || 10;
+  var projProfit = Math.round(stake * (Math.pow(1 + growth / 100, ticks) - 1) * 100) / 100;
+  var runsNeeded = projProfit > 0 ? Math.ceil(tp / projProfit) : 999;
+  sel('acProjProfit', '+$' + projProfit.toFixed(3));
+  sel('acNeeded', runsNeeded + ' runs');
+  var hint = document.getElementById('acTicks');
+  if (hint && hint.nextElementSibling) {
+    hint.nextElementSibling.textContent = ticks + ' ticks @' + growth + '% = +$' + projProfit.toFixed(3) + '/run';
+  }
+}
+
+// Live accumulator tick handler (while contract is open)
+var _accumContractId = null;
+var _accumStartValue = 0;
+var _accumCashoutPending = false;
+
+function accumLiveTick(sym) {
+  if (!AI.running || AI.mode !== 'accum') return;
+  if (AI.acActiveCid) {
+    // Contract is live - handled by proposal_open_contract subscription
+    // Safety: if contract has been open > 5 min with no update, reset
+    if (AI.acOpenTime && Date.now() - AI.acOpenTime > 300000) {
+      log('ac', 'Contract timeout - resetting', 'warn');
+      AI.acActiveCid = null; AI.inTrade = false; AI.pendingResult = false;
+    }
+    return;
+  }
+  // For accum, only pendingResult blocks (not inTrade - accum clears it in onBuy)
+  if (AI.pendingResult) return;
+  // Safety: if somehow inTrade stuck without acActiveCid, clear it
+  if (AI.inTrade) { AI.inTrade = false; return; }
+  if (Date.now() - lastTradeTime < 2000) return;
+  if (AI.acPauseUntil > 0) { if (Date.now() < AI.acPauseUntil) { setState('waiting'); return; } AI.acPauseUntil = 0; }
+  var tp = parseFloat(gv('acTP')) || 10;
+  var sl = parseFloat(gv('acSL')) || 20;
+  if (EQ.acS >= tp) { log('ac', 'TP +$' + EQ.acS.toFixed(2) + ' - Session complete!', 'success'); stopMode(); return; }
+  if (EQ.acS <= -sl) { log('ac', 'SL -$' + Math.abs(EQ.acS).toFixed(2), 'danger'); stopMode(); return; }
+  setState('scanning');
+
+  // Update BB/RSI display every scan
+  var acIdx = gv('acIndex') || 'AUTO';
+  var mkt = findAccumMarket(acIdx);
+
+  // Update display
+  if (mkt) {
+    var ix = IDX.find(function(i) { return i.s === mkt.sym; });
+    sel('accumBBW', mkt.bbWidth.toFixed(4) + '%');
+    sel('accumBBT', mkt.bbContracting ? 'CONTRACTING' : 'EXPANDING');
+    var bbtEl = document.getElementById('accumBBT');
+    if (bbtEl) bbtEl.style.color = mkt.bbContracting ? 'var(--green)' : 'var(--loss)';
+    sel('accumRSI', mkt.rsi.toFixed(1));
+    var rsiEl = document.getElementById('accumRSI');
+    if (rsiEl) rsiEl.style.color = (mkt.rsi >= 40 && mkt.rsi <= 60) ? 'var(--green)' : 'var(--yellow)';
+    sel('accumMkt', ix ? ix.n : mkt.sym);
+    sel('accumSigInfo', 'BB:' + mkt.bbWidth.toFixed(3) + '% RSI:' + mkt.rsi + ' pos:' + mkt.posInBand + '%');
+  } else {
+    // Show best scan info even when no signal
+    var _bestScan = null, _bScore = 0;
+    IDX.forEach(function(ix) {
+      var s = ST[ix.s]; if (!s || !s.conn || s.prices.length < 30) return;
+      try {
+        var rsi = calcRSI(s.prices, 14);
+        var bb = calcBB(s.prices, 20, 2);
+        if (!bb) return;
+        var rsiZoneEl = gv('acRSIZone') || 'normal';
+        var rLow = rsiZoneEl === 'strict' ? 45 : rsiZoneEl === 'wide' ? 35 : 40;
+        var rHigh = rsiZoneEl === 'strict' ? 55 : rsiZoneEl === 'wide' ? 65 : 60;
+        var score = (50 - Math.abs(rsi - 50)) + (rsi >= rLow && rsi <= rHigh ? 20 : 0);
+        if (score > _bScore) { _bScore = score; _bestScan = { n: ix.n, rsi: rsi, bbWidth: bb.width }; }
+      } catch(e) {}
+    });
+    if (_bestScan) {
+      sel('accumRSI', _bestScan.rsi.toFixed(1));
+      var rsiEl2 = document.getElementById('accumRSI');
+      if (rsiEl2) rsiEl2.style.color = 'var(--yellow)';
+      sel('accumBBW', _bestScan.bbWidth.toFixed(4) + '%');
+      sel('accumSigInfo', 'Best: ' + _bestScan.n + ' RSI:' + _bestScan.rsi.toFixed(1) + ' (need BB contract)');
+    }
+  }
+
+  if (!mkt) {
+    if (AI.acWaitSince === 0) AI.acWaitSince = Date.now();
+    if (Date.now() - AI.acWaitSince > 90000) {
+      AI.acPauseUntil = Date.now() + 300000; AI.acWaitSince = 0;
+      log('ac', 'No BB contraction signal 90s - pausing 5min', 'warn');
+      pushErr('info', 'ACCUM paused - no BB contraction', '');
+    }
+    setState('waiting'); return;
+  }
+  AI.acWaitSince = 0;
+
+  // Fire accumulator
+  var _acBaseStake = parseFloat(gv('acStake')) || 5;
+  var growth = parseFloat(gv('acGrowth')) || 1;
+  var ticks = parseInt(gv('acTicks')) || 5;
+  var _acConf=getConfidence('accum',{rsi:mkt.rsi,bbw:mkt.bbWidth,posInBand:mkt.posInBand});
+  showConfidence('accum',_acConf);
+  var stake=confStake(_acBaseStake,_acConf);
+  if(stake===0){log('ac','[ML] Accum conf too low ('+_acConf+'%) - skip','warn');setState('waiting');return;}
+  AI.acEntryStake = stake;
+  AI.acTicks = 0;
+  var ix = IDX.find(function(i) { return i.s === mkt.sym; });
+  var projProfit = Math.round(stake * (Math.pow(1 + growth / 100, ticks) - 1) * 100) / 100;
+  log('ac', 'ACCUM | ' + ix.n + ' | ' + growth + '% | cashout@' + ticks + 't | $' + stake + ' +$' + projProfit.toFixed(3) + ' projected', 'info');
+  log('ac', 'BB:' + mkt.bbWidth.toFixed(4) + '% CONTR | RSI:' + mkt.rsi + ' | pos:' + mkt.posInBand + '%', 'info');
+  AI._lastRSI=mkt.rsi;AI._lastBBW=mkt.bbWidth;AI._lastTicksSurvived=0;AI._lastPiScore=null;AI._lastHotPct=null;AI._lastLean=null;
+
+  // Show live panel
+  var liveEl = document.getElementById('accumLive');
+  if (liveEl) liveEl.style.display = 'block';
+  sel('accumVal', '$' + stake.toFixed(2));
+  sel('accumProfit', '+$0.000');
+  sel('accumTicksD', '0 / ' + ticks);
+  var barEl = document.getElementById('accumBar');
+  if (barEl) barEl.style.width = '0%';
+
+  AI.inTrade = true; AI.pendingResult = true; AI.activeSym = mkt.sym; AI.activeSource = 'accum';
+  setState('trading');
+  var ct = g('ctBar'); if (ct) ct.className = 'ct show';
+  sel('ctIdx', ix ? ix.n : mkt.sym); sel('ctType', 'ACCUM ' + growth + '%'); sel('ctStake', '$' + stake.toFixed(2)); sel('ctStatus', 'OPENING...');
+  g('ctStatus').style.color = 'var(--yellow)';
+
+  // Deriv accumulator: growth_rate is decimal (0.01 = 1%)
+  var params = { amount: stake, basis: 'stake', contract_type: 'ACCU', currency: 'USD', symbol: mkt.sym, growth_rate: growth / 100 };
+  AI.pendingResult = true;
+  AI.acOpenTime = Date.now();
+  lastTradeTime = Date.now();
+  ws.send(JSON.stringify({ buy: 1, price: stake, parameters: params }));
+}
+
+function onAccumUpdate(poc) {
+  if (!poc || poc.contract_id !== AI.acActiveCid) return;
+  if (poc.status === 'sold' || poc.status === 'expired' || poc.is_sold) {
+    onAccumClosed(poc); return;
+  }
+  // Update live display - Deriv accumulator fields
+  var currentVal = parseFloat(poc.bid_price || poc.sell_price || AI.acEntryStake);
+  var profit = Math.round((currentVal - AI.acEntryStake) * 1000) / 1000;
+  var ticks = parseInt(gv('acTicks')) || 5;
+  // tick_count from Deriv API
+  if (poc.tick_count !== undefined) AI.acTicks = poc.tick_count;
+  else AI.acTicks = (AI.acTicks || 0) + 1;
+  sel('accumVal', '$' + currentVal.toFixed(3));
+  sel('accumProfit', (profit >= 0 ? '+' : '') + '$' + profit.toFixed(3));
+  document.getElementById('accumProfit').style.color = profit >= 0 ? 'var(--profit)' : 'var(--loss)';
+  sel('accumTicksD', AI.acTicks + ' / ' + ticks);
+  var barEl = document.getElementById('accumBar');
+  if (barEl) barEl.style.width = Math.min(100, AI.acTicks / ticks * 100) + '%';
+  sel('ctStatus', 'TICK ' + AI.acTicks);
+  // Auto-cashout when ticks reached
+  if (AI.acTicks >= ticks && !_accumCashoutPending) {
+    _accumCashoutPending = true;
+    log('ac', 'Auto-cashout at tick ' + AI.acTicks + ' | val: $' + currentVal.toFixed(3), 'success');
+    doCashout(AI.acActiveCid);
+  }
+}
+
+function doCashout(cid) {
+  if (!ws || ws.readyState !== 1) return;
+  log('ac', 'Sending cashout...', 'info');
+  ws.send(JSON.stringify({ sell: cid, price: 0 }));
+}
+
+function onAccumClosed(poc) {
+  clearTimeout(AI.tradeTimer);
+  var sold = parseFloat(poc.sell_price || poc.bid_price || poc.payout || 0);
+  var profit = Math.round((sold - AI.acEntryStake) * 1000) / 1000;
+  log('ac', 'Contract closed. Sold: $' + sold.toFixed(3) + ' Entry: $' + AI.acEntryStake.toFixed(2), 'info');
+  AI._lastTicksSurvived = AI.acTicks;
+  var won = profit > 0;
+  AI.acActiveCid = null; _accumCashoutPending = false;
+  AI.inTrade = false; AI.pendingResult = false;
+  EQ.acS = Math.round((EQ.acS + profit) * 1000) / 1000;
+  EQ.ac.push(EQ.acS); if (EQ.ac.length > 300) EQ.ac.shift();
+  AI.totalPnl = Math.round((AI.totalPnl + profit) * 100) / 100;
+  AI.sessPnl = Math.round((AI.sessPnl + profit) * 100) / 100;
+  if (won) { AI.wins++; AI.acRuns++; AI.consecLoss = 0; } else { AI.losses++; AI.consecLoss++; }
+  sel('acRuns', AI.acRuns);
+  addTlog(AI.activeSym, 'ACCUM', AI.acEntryStake, profit, won, 'accum');
+  var liveEl = document.getElementById('accumLive');
+  if (liveEl) liveEl.style.display = 'none';
+  var ct = g('ctBar'); if (ct) ct.className = 'ct';
+  log('ac', (won ? 'WIN' : 'LOSS') + ' | profit: ' + (profit >= 0 ? '+' : '') + '$' + profit.toFixed(3) + ' | session: ' + (EQ.acS >= 0 ? '+' : '') + '$' + EQ.acS.toFixed(3), won ? 'success' : 'danger');
+  upStats(); drawAll(); silBar();
+  if (AI.consecLoss >= 3) {
+    AI.acPauseUntil = Date.now() + 120000; AI.consecLoss = 0;
+    log('ac', '3 losses - cooling 2min', 'warn');
+    pushErr('circuit', 'ACCUM cooling - 3 losses', '');
+  }
+  setTimeout(function() { if (AI.running) setState('scanning'); }, 1000);
+}
+
+function upAC() {
+  var runs = g('acRunning'); if (runs) { runs.textContent = AI.running && AI.mode === 'accum' ? 'RUNNING' : 'IDLE'; runs.style.color = AI.running && AI.mode === 'accum' ? 'var(--green)' : 'var(--dim)'; }
+  updateAccumProjection();
+}
+// ── END ACCUMULATOR ──────────────────────────────
+
+
+// ══════════════════════════════════════════════════════
+// PHASE 1 INTELLIGENCE ENGINE
+// Persistent storage + Adaptive thresholds + Claude AI
+// ══════════════════════════════════════════════════════
+
+
+// ══════════════════════════════════════════════════════
+// PHASE 2: ML SCORING ENGINE
+// Logistic regression (30+ trades) → Neural net (500+)
+// ══════════════════════════════════════════════════════
+
+var ML = {
+  models: {},      // per-mode trained models
+  training: false,
+  lastTrained: {},
+  minTrades: 30,   // min trades to train
+  nnThreshold: 500 // trades needed for neural net
+};
+
+// Symbol encoding (0-12)
+var SYM_MAP = {};
+IDX.forEach(function(ix, i) { SYM_MAP[ix.s] = i / IDX.length; });
+
+// SIL regime encoding
+var REGIME_MAP = { calibrating: 0, normal: 1, reset: 0.5, streak: 0.25, cluster: 0 };
+
+// Hour encoding - cyclical (captures time-of-day patterns)
+function encodeHour(h) {
+  return [
+    Math.sin(2 * Math.PI * h / 24),
+    Math.cos(2 * Math.PI * h / 24)
+  ];
+}
+
+// ── FEATURE EXTRACTION PER MODE ──────────────────────
+function extractFeatures(rec) {
+  var h = encodeHour(rec.hour || 0);
+  var sym = SYM_MAP[rec.sym] || 0;
+  var regime = REGIME_MAP[rec.silRegime] !== undefined ? REGIME_MAP[rec.silRegime] : 0.5;
+
+  if (rec.mode === 'pioneer') {
+    return [
+      (rec.entryScore || 50) / 100,           // score 0-1
+      (rec.hotPct || 15) / 30,                // hot digit % normalised
+      rec.chi2p !== undefined ? (1 - rec.chi2p) : 0.5, // chi2 significance
+      regime, sym, h[0], h[1]
+    ];
+  }
+  if (rec.mode === 'power') {
+    return [
+      1 - (rec.coldPct || 18) / 25,          // lower cold = higher feature
+      1 - (rec.r20cold || 20) / 30,
+      regime, sym, h[0], h[1]
+    ];
+  }
+  if (rec.mode === 'boyboy') {
+    return [
+      (rec.fPct || 68) / 100,
+      (rec.rPct || 63) / 100,
+      regime, sym, h[0], h[1]
+    ];
+  }
+  if (rec.mode === 'evenodd') {
+    return [
+      ((rec.lean || 57) - 50) / 20,          // lean above 50%, normalised
+      (rec.delta || 0) / 10,                  // momentum
+      rec.chi2sig ? 1 : 0,
+      regime, sym, h[0], h[1]
+    ];
+  }
+  if (rec.mode === 'accum') {
+    return [
+      1 - Math.abs((rec.rsi || 50) - 50) / 25, // RSI neutrality 0-1
+      1 - (rec.bbw || 0.03) / 0.1,           // lower BBW = better
+      (rec.posInBand || 50) / 100,
+      regime, sym, h[0], h[1]
+    ];
+  }
+  return [0.5, 0.5, regime, sym, h[0], h[1]];
+}
+
+// ── LOGISTIC REGRESSION ─────────────────────────────
+// Simple but powerful - works well with 30-500 trades
+function sigmoid(x) { return 1 / (1 + Math.exp(-x)); }
+
+function logisticPredict(weights, bias, features) {
+  var z = bias;
+  for (var i = 0; i < features.length; i++) z += (weights[i] || 0) * features[i];
+  return sigmoid(z);
+}
+
+function trainLogistic(trades, mode, epochs, lr) {
+  if (!epochs) epochs = 200;
+  if (!lr) lr = 0.1;
+  var modeTrades = trades.filter(function(t) { return t.mode === mode; });
+  if (modeTrades.length < ML.minTrades) return null;
+
+  var X = modeTrades.map(extractFeatures);
+  var y = modeTrades.map(function(t) { return t.won ? 1 : 0; });
+  var nFeatures = X[0].length;
+
+  // Initialize weights
+  var weights = new Array(nFeatures).fill(0);
+  var bias = 0;
+
+  // Gradient descent
+  for (var ep = 0; ep < epochs; ep++) {
+    var dw = new Array(nFeatures).fill(0);
+    var db = 0;
+    var n = X.length;
+    for (var i = 0; i < n; i++) {
+      var pred = logisticPredict(weights, bias, X[i]);
+      var err = pred - y[i];
+      for (var j = 0; j < nFeatures; j++) dw[j] += err * X[i][j];
+      db += err;
+    }
+    for (var j = 0; j < nFeatures; j++) weights[j] -= lr * dw[j] / n;
+    bias -= lr * db / n;
+  }
+
+  // Calculate training accuracy
+  var correct = 0;
+  for (var i = 0; i < X.length; i++) {
+    var p = logisticPredict(weights, bias, X[i]);
+    if ((p >= 0.5) === (y[i] === 1)) correct++;
+  }
+  var acc = Math.round(correct / X.length * 100);
+
+  return { type: 'logistic', weights: weights, bias: bias, acc: acc, n: modeTrades.length, mode: mode };
+}
+
+// ── NEURAL NETWORK (TensorFlow.js - 500+ trades) ────
+var _tfLoaded = false;
+
+function loadTF() {
+  if (_tfLoaded || typeof tf !== 'undefined') { _tfLoaded = true; return Promise.resolve(); }
+  return new Promise(function(resolve) {
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js';
+    script.onload = function() { _tfLoaded = true; resolve(); };
+    script.onerror = function() { resolve(); }; // fail gracefully
+    document.head.appendChild(script);
+  });
+}
+
+async function trainNeuralNet(trades, mode) {
+  await loadTF();
+  if (typeof tf === 'undefined') return null;
+
+  var modeTrades = trades.filter(function(t) { return t.mode === mode; });
+  if (modeTrades.length < ML.nnThreshold) return null;
+
+  var X = modeTrades.map(extractFeatures);
+  var y = modeTrades.map(function(t) { return t.won ? 1 : 0; });
+  var nFeatures = X[0].length;
+
+  var xs = tf.tensor2d(X);
+  var ys = tf.tensor2d(y.map(function(v) { return [v]; }));
+
+  var model = tf.sequential({
+    layers: [
+      tf.layers.dense({ inputShape: [nFeatures], units: 16, activation: 'relu' }),
+      tf.layers.dropout({ rate: 0.2 }),
+      tf.layers.dense({ units: 8, activation: 'relu' }),
+      tf.layers.dense({ units: 1, activation: 'sigmoid' })
+    ]
+  });
+
+  model.compile({ optimizer: tf.train.adam(0.001), loss: 'binaryCrossentropy', metrics: ['accuracy'] });
+
+  await model.fit(xs, ys, { epochs: 50, batchSize: 32, shuffle: true, verbose: 0 });
+
+  // Get accuracy
+  var preds = model.predict(xs);
+  var predArr = await preds.data();
+  var correct = predArr.filter(function(p, i) { return (p >= 0.5) === (y[i] === 1); }).length;
+  var acc = Math.round(correct / y.length * 100);
+
+  xs.dispose(); ys.dispose(); preds.dispose();
+
+  // Save weights as JSON for persistence
+  var weights = await model.save(tf.io.withSaveHandler(async function(artifacts) { return artifacts; }));
+  return { type: 'neural', model: model, weights: weights, acc: acc, n: modeTrades.length, mode: mode };
+}
+
+// ── MAIN TRAINING FUNCTION ────────────────────────────
+var _trainingInProgress = false;
+async function trainAllModels() {
+  if (_trainingInProgress || TRADES.length < ML.minTrades) return;
+  _trainingInProgress = true;
+  log('pi', '[ML] Training models on ' + TRADES.length + ' trades...', 'info');
+
+  var modes = ['pioneer', 'power', 'boyboy', 'evenodd', 'accum'];
+  var trained = 0;
+
+  for (var i = 0; i < modes.length; i++) {
+    var mode = modes[i];
+    var modeTrades = TRADES.filter(function(t) { return t.mode === mode; });
+    if (modeTrades.length < ML.minTrades) continue;
+
+    var model = null;
+    if (modeTrades.length >= ML.nnThreshold) {
+      model = await trainNeuralNet(TRADES, mode);
+      if (!model) model = trainLogistic(TRADES, mode); // fallback
+    } else {
+      model = trainLogistic(TRADES, mode);
+    }
+
+    if (model) {
+      ML.models[mode] = model;
+      ML.lastTrained[mode] = Date.now();
+      trained++;
+      // Persist logistic model (NN too large for localStorage)
+      if (model.type === 'logistic') {
+        storeSave('ml_' + mode, { weights: model.weights, bias: model.bias, acc: model.acc, n: model.n, type: 'logistic' });
+      }
+      log('pi', '[ML] ' + mode + ': ' + model.type + ' trained (' + model.acc + '% acc, ' + model.n + ' trades)', 'info');
+    }
+  }
+
+  _trainingInProgress = false;
+  if (trained > 0) {
+    updateIntelPanel();
+    log('pi', '[ML] ' + trained + ' models ready. Confidence scoring active.', 'success');
+  }
+}
+
+function loadModels() {
+  var modes = ['pioneer', 'power', 'boyboy', 'evenodd', 'accum'];
+  modes.forEach(function(mode) {
+    var saved = storeLoad('ml_' + mode, null);
+    if (saved && saved.type === 'logistic') {
+      ML.models[mode] = saved;
+      log('pi', '[ML] Loaded ' + mode + ' model (' + saved.acc + '% acc, ' + saved.n + ' trades)', 'info');
+    }
+  });
+}
+
+// ── CONFIDENCE SCORING ────────────────────────────────
+// Returns 0-100 confidence, or null if no model yet
+function getConfidence(mode, context) {
+  // Step 1: Try ML model first (active after 30+ trades)
+  var model = ML.models[mode];
+  if (model) {
+    var rec = { mode: mode, hour: new Date().getUTCHours(), silRegime: SIL.regime };
+    if (context) Object.keys(context).forEach(function(k) { rec[k] = context[k]; });
+    var features = extractFeatures(rec);
+    var prob;
+    if (model.type === 'logistic') {
+      prob = logisticPredict(model.weights, model.bias, features);
+    } else if (model.type === 'neural' && model.model) {
+      try {
+        var inp = tf.tensor2d([features]);
+        var out = model.model.predict(inp);
+        prob = out.dataSync()[0];
+        inp.dispose(); out.dispose();
+      } catch(e) { prob = 0.5; }
+    } else { prob = 0.5; }
+    return Math.round(prob * 100);
+  }
+
+  // Step 2: Rule-based confidence - works from trade 1
+  // Gives real visible impact while ML builds up data
+  if (!context) return 50;
+  var score = 50; // base
+
+  // SIL regime gates
+  var regime = SIL.regime;
+  if (regime === 'cluster') score -= 25;
+  else if (regime === 'streak') score -= 15;
+  else if (regime === 'normal') score += 10;
+  else if (regime === 'reset') score += 5;
+
+  // Mode-specific scoring
+  if (mode === 'pioneer') {
+    var es = context.entryScore || 50;
+    var hp = context.hotPct || 15;
+    score += Math.round((es - 50) * 0.4);  // score above 50 adds confidence
+    score += Math.round((hp - 15) * 1.2);  // hot digit strength
+    if (es >= 70) score += 8;
+    if (hp >= 20) score += 7;
+  }
+  else if (mode === 'power') {
+    var cp = context.coldPct || 18;
+    var rc = context.r20cold || 20;
+    score += Math.round((18 - cp) * 3);    // colder = better
+    score += Math.round((20 - rc) * 1.5);  // cold recently = better
+  }
+  else if (mode === 'evenodd') {
+    var ln = context.lean || 57;
+    var dt = context.delta || 0;
+    score += Math.round((ln - 57) * 2);
+    if (dt > 3) score += 10;  // momentum rising
+    else if (dt < -3) score -= 15; // momentum falling
+    if (context.chi2sig) score += 8;
+  }
+  else if (mode === 'accum') {
+    var rsi = context.rsi || 50;
+    var bbw = context.bbw || 0.03;
+    var pos = context.posInBand || 50;
+    score += Math.round((25 - Math.abs(rsi - 50)) * 0.8); // RSI neutrality
+    score += Math.round((0.05 - Math.min(bbw, 0.05)) / 0.05 * 15); // tight BB
+    if (pos >= 30 && pos <= 70) score += 8; // safe position
+  }
+  else if (mode === 'boyboy') {
+    // BB step 0: base confidence from market stability
+    if (regime === 'normal') score += 10;
+  }
+
+  // Hour penalty: erratic hours (known low-liquidity windows)
+  var h = new Date().getUTCHours();
+  if (h >= 0 && h <= 3) score -= 8;   // late night UTC
+  if (h >= 22) score -= 5;
+
+  // Drawdown penalty
+  var dd = Math.round(SIL.dd * 100);
+  if (dd >= 10) score -= 15;
+  else if (dd >= 5) score -= 7;
+
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+// ── CONFIDENCE-BASED STAKE SIZING ────────────────────
+function confStake(baseStake, confidence) {
+  if (confidence === null) return baseStake;
+  // Scale stake by confidence band
+  if (confidence < 40) return 0;                                          // hard block - very bad conditions
+  if (confidence < 50) return Math.round(baseStake * 0.5 * 100) / 100;   // risky - half stake
+  if (confidence < 60) return Math.round(baseStake * 0.75 * 100) / 100;  // cautious
+  if (confidence < 70) return baseStake;                                  // normal
+  if (confidence < 80) return Math.round(baseStake * 1.25 * 100) / 100;  // good signal
+  return Math.round(baseStake * 1.5 * 100) / 100;                        // strong signal
+}
+
+// ── UI: CONFIDENCE DISPLAY ────────────────────────────
+function showConfidence(mode, conf) {
+  var el = g('confScore');
+  if (!el) return;
+  if (conf === null) conf = 50;
+  el.style.display = 'flex';
+  var col = conf >= 75 ? 'var(--profit)' : conf >= 55 ? 'var(--yellow)' : 'var(--loss)';
+  var label = conf >= 75 ? 'HIGH' : conf >= 55 ? 'MED' : 'LOW';
+  var src = ML.models[mode] ? 'ML' : 'RULE';
+  el.innerHTML = '<span style="font-size:7px;color:var(--sub);font-family:var(--mono);">' + src + ' CONF</span><span style="font-size:15px;font-weight:800;font-family:var(--mono);color:' + col + ';">' + conf + '%</span><span style="font-size:7px;font-family:var(--mono);color:' + col + ';font-weight:700;">' + label + '</span>';
+}
+
+// ── TRAINING TRIGGER: after every 50 new trades ──────
+var _lastTrainCount = 0;
+function maybeRetrain() {
+  var tot = TRADES.length;
+  if (tot >= ML.minTrades && tot - _lastTrainCount >= 20) {
+    _lastTrainCount = tot;
+    setTimeout(trainAllModels, 2000); // train 2s after trade to avoid blocking
+  }
+}
+
+// ── LOAD MODELS ON STARTUP ────────────────────────────
+function initML() {
+  loadModels();
+  if (TRADES.length >= ML.minTrades) {
+    setTimeout(trainAllModels, 3000);
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// END PHASE 2 ML ENGINE
+// ══════════════════════════════════════════════════════
+
+// ── PERSISTENT STORAGE ────────────────────────────────
+// Storage helpers - use localStorage for persistence
+function storeSave(key, val) {
+  try { localStorage.setItem('dai_' + key, JSON.stringify(val)); } catch(e) {}
+}
+function storeLoad(key, def) {
+  try { var raw = localStorage.getItem('dai_' + key); if (raw) return JSON.parse(raw); } catch(e) {}
+  return def;
+}
+
+// Trade record with full context for learning
+var TRADES = []; // in-memory, also persisted
+var ADAPT = {   // adaptive thresholds per mode
+  pioneer: { minScore: 50, hotPct: 15, loaded: false },
+  power:   { coldPct: 18, loaded: false },
+  boyboy:  { minFPct: 68, loaded: false },
+  evenodd: { minLean: 57, loaded: false },
+  accum:   { maxBBW: null, rsiLow: 40, rsiHigh: 60, loaded: false }
+};
+
+async function saveTrade(rec) {
+  TRADES.push(rec);
+  if (TRADES.length > 500) TRADES.shift();
+  storeSave('trades', TRADES);
+  runAdaptation();
+  maybeRetrain();
+  updateIntelPanel();
+}
+
+function loadTrades() {
+  TRADES = storeLoad('trades', []);
+  ADAPT.pioneer = storeLoad('adapt_pioneer', ADAPT.pioneer);
+  ADAPT.power   = storeLoad('adapt_power',   ADAPT.power);
+  ADAPT.boyboy  = storeLoad('adapt_boyboy',  ADAPT.boyboy);
+  ADAPT.evenodd = storeLoad('adapt_evenodd', ADAPT.evenodd);
+  ADAPT.accum   = storeLoad('adapt_accum',   ADAPT.accum);
+  console.log('[INTEL] Loaded', TRADES.length, 'historical trades');
+  updateIntelPanel();
+}
+
+// ── ADAPTIVE THRESHOLD ENGINE ─────────────────────────
+function runAdaptation() {
+  ['pioneer','power','boyboy','evenodd','accum'].forEach(function(mode) {
+    var modeTrades = TRADES.filter(function(t) { return t.mode === mode; });
+    if (modeTrades.length < 30) return; // need 30+ trades to adapt
+    adaptMode(mode, modeTrades);
+  });
+  var badge = g('intelBadge');
+  var hasLearned = ['pioneer','power','boyboy','evenodd','accum'].some(function(m) { return ADAPT[m].loaded; });
+  if (badge) { badge.textContent = hasLearned ? 'LEARNED' : 'DEFAULT'; badge.className = 'adapt-badge ' + (hasLearned ? 'learned' : 'default'); }
+}
+
+function adaptMode(mode, trades) {
+  if (mode === 'pioneer') {
+    // Find optimal score threshold - group by score range, find best win rate
+    var buckets = {};
+    trades.forEach(function(t) {
+      if (t.entryScore === undefined) return;
+      var bucket = Math.floor(t.entryScore / 5) * 5;
+      if (!buckets[bucket]) buckets[bucket] = { w: 0, l: 0 };
+      if (t.won) buckets[bucket].w++; else buckets[bucket].l++;
+    });
+    var bestBucket = null, bestWR = 0;
+    Object.keys(buckets).forEach(function(b) {
+      var bk = buckets[b], tot = bk.w + bk.l;
+      if (tot < 5) return;
+      var wr = bk.w / tot;
+      if (wr > bestWR) { bestWR = wr; bestBucket = parseInt(b); }
+    });
+    if (bestBucket !== null && bestWR > 0.55) {
+      ADAPT.pioneer.minScore = Math.max(40, bestBucket - 5);
+      ADAPT.pioneer.loaded = true;
+      storeSave('adapt_pioneer', ADAPT.pioneer);
+    }
+    // Adapt hot digit threshold
+    var hotWins = trades.filter(function(t) { return t.hotPct && t.hotPct >= 18 && t.won; }).length;
+    var hotTotal = trades.filter(function(t) { return t.hotPct && t.hotPct >= 18; }).length;
+    var midWins = trades.filter(function(t) { return t.hotPct && t.hotPct >= 15 && t.hotPct < 18 && t.won; }).length;
+    var midTotal = trades.filter(function(t) { return t.hotPct && t.hotPct >= 15 && t.hotPct < 18; }).length;
+    if (hotTotal >= 10 && midTotal >= 10) {
+      var hotWR = hotTotal > 0 ? hotWins / hotTotal : 0;
+      var midWR = midTotal > 0 ? midWins / midTotal : 0;
+      ADAPT.pioneer.hotPct = hotWR > midWR + 0.05 ? 18 : 15;
+      storeSave('adapt_pioneer', ADAPT.pioneer);
+    }
+  }
+  if (mode === 'accum') {
+    // Find BBW range with best survival (most ticks)
+    var bbwGroups = {};
+    trades.forEach(function(t) {
+      if (t.bbw === undefined) return;
+      var bucket = Math.floor(t.bbw * 1000) / 1000;
+      if (!bbwGroups[bucket]) bbwGroups[bucket] = { ticks: [], wins: 0, total: 0 };
+      bbwGroups[bucket].ticks.push(t.ticksSurvived || 0);
+      bbwGroups[bucket].total++;
+      if (t.won) bbwGroups[bucket].wins++;
+    });
+    var bestBBW = null, bestSurvival = 0;
+    Object.keys(bbwGroups).forEach(function(b) {
+      var g2 = bbwGroups[b];
+      if (g2.total < 3) return;
+      var avgTicks = g2.ticks.reduce(function(a, b2) { return a + b2; }, 0) / g2.ticks.length;
+      if (avgTicks > bestSurvival) { bestSurvival = avgTicks; bestBBW = parseFloat(b); }
+    });
+    if (bestBBW !== null) {
+      ADAPT.accum.maxBBW = bestBBW * 1.2;
+      ADAPT.accum.loaded = true;
+      storeSave('adapt_accum', ADAPT.accum);
+    }
+    // Adapt RSI zone
+    var rsiGroups = { narrow: { w: 0, t: 0 }, normal: { w: 0, t: 0 }, wide: { w: 0, t: 0 } };
+    trades.forEach(function(t) {
+      if (t.rsi === undefined) return;
+      var narrow = t.rsi >= 45 && t.rsi <= 55;
+      var normal = t.rsi >= 40 && t.rsi <= 60;
+      if (narrow) { rsiGroups.narrow.t++; if (t.won) rsiGroups.narrow.w++; }
+      else if (normal) { rsiGroups.normal.t++; if (t.won) rsiGroups.normal.w++; }
+      else { rsiGroups.wide.t++; if (t.won) rsiGroups.wide.w++; }
+    });
+    var narrowWR = rsiGroups.narrow.t >= 5 ? rsiGroups.narrow.w / rsiGroups.narrow.t : 0;
+    var normalWR = rsiGroups.normal.t >= 5 ? rsiGroups.normal.w / rsiGroups.normal.t : 0;
+    if (narrowWR > normalWR + 0.08 && rsiGroups.narrow.t >= 8) {
+      ADAPT.accum.rsiLow = 45; ADAPT.accum.rsiHigh = 55;
+    } else if (normalWR >= narrowWR) {
+      ADAPT.accum.rsiLow = 40; ADAPT.accum.rsiHigh = 60;
+    }
+    ADAPT.accum.loaded = true;
+    storeSave('adapt_accum', ADAPT.accum);
+  }
+  if (mode === 'power') {
+    var coldTrades = trades.filter(function(t) { return t.coldPct !== undefined && t.coldPct !== null; });
+    if (coldTrades.length >= 10) {
+      var coldWins = coldTrades.filter(function(t) { return t.coldPct <= 15 && t.won; }).length;
+      var coldTot = coldTrades.filter(function(t) { return t.coldPct <= 15; }).length;
+      var coldWR = coldTot >= 5 ? coldWins / coldTot : 0;
+      var relax = coldTrades.filter(function(t) { return t.coldPct > 15 && t.coldPct <= 18 && t.won; }).length;
+      var relaxTot = coldTrades.filter(function(t) { return t.coldPct > 15 && t.coldPct <= 18; }).length;
+      var relaxWR = relaxTot >= 5 ? relax / relaxTot : 0;
+      if (coldWR > relaxWR + 0.1) { ADAPT.power.coldPct = 15; } else { ADAPT.power.coldPct = 18; }
+      ADAPT.power.loaded = true;
+      storeSave('adapt_power', ADAPT.power);
+    }
+  }
+  if (mode === 'evenodd') {
+    var leanGroups = {};
+    trades.forEach(function(t) {
+      if (t.lean === undefined) return;
+      var bucket = Math.floor(t.lean);
+      if (!leanGroups[bucket]) leanGroups[bucket] = { w: 0, t: 0 };
+      leanGroups[bucket].t++;
+      if (t.won) leanGroups[bucket].w++;
+    });
+    var bestLean = null, bestWR2 = 0;
+    Object.keys(leanGroups).forEach(function(b) {
+      var bk = leanGroups[b];
+      if (bk.t < 5) return;
+      var wr = bk.w / bk.t;
+      if (wr > bestWR2) { bestWR2 = wr; bestLean = parseInt(b); }
+    });
+    if (bestLean !== null && bestLean >= 54) {
+      ADAPT.evenodd.minLean = Math.min(62, bestLean);
+      ADAPT.evenodd.loaded = true;
+      storeSave('adapt_evenodd', ADAPT.evenodd);
+    }
+  }
+}
+
+// Apply adaptive thresholds when firing trades
+function getAdaptedThreshold(mode, key, fallback) {
+  if (ADAPT[mode] && ADAPT[mode][key] !== undefined && ADAPT[mode].loaded) {
+    return ADAPT[mode][key];
+  }
+  return fallback;
+}
+
+// ── INTELLIGENCE PANEL UI ─────────────────────────────
+var _intelOpen = false;
+var _activeIntelTab = 'stats';
+
+function toggleIntel() {
+  _intelOpen = !_intelOpen;
+  var body = g('intelBody');
+  var chev = g('intelChevron');
+  if (body) body.className = 'intel-body' + (_intelOpen ? ' open' : '');
+  if (chev) chev.innerHTML = _intelOpen ? '&#9650;' : '&#9660;';
+  if (_intelOpen) updateIntelPanel();
+}
+
+function switchIntelTab(tab) {
+  _activeIntelTab = tab;
+  ['stats','adapt','claude'].forEach(function(t) {
+    var btn = g('itab-' + t);
+    var content = g('icontent-' + t);
+    if (btn) btn.className = 'intel-tab' + (t === tab ? ' active' : '');
+    if (content) content.style.display = t === tab ? 'block' : 'none';
+  });
+  var chatArea = g('chatInputArea');
+  if (chatArea) chatArea.style.display = tab === 'claude' ? 'flex' : 'none';
+  if (tab === 'stats') updateIntelStats();
+  if (tab === 'adapt') updateIntelAdapt();
+}
+
+var _intelUpdateTimer = null;
+function updateIntelPanel() {
+  // Debounce - only update header immediately, defer content
+  var tot = AI.wins + AI.losses;
+  var wr = tot > 0 ? Math.round(AI.wins / tot * 100) : 0;
+  var wrEl = g('intelWR');
+  if (wrEl) { wrEl.textContent = wr + '% wr (' + tot + 't)'; wrEl.style.color = wr >= 55 ? 'var(--profit)' : wr >= 45 ? 'var(--yellow)' : 'var(--loss)'; }
+  if (!_intelOpen) return; // don't update content if panel closed
+  clearTimeout(_intelUpdateTimer);
+  _intelUpdateTimer = setTimeout(function() {
+    if (_activeIntelTab === 'stats') updateIntelStats();
+    if (_activeIntelTab === 'adapt') updateIntelAdapt();
+  }, 300); // 300ms debounce prevents layout thrash during trading
+}
+
+function updateIntelStats() {
+  var el = g('intelStatsList'); if (!el) return;
+  var tot = TRADES.length;
+  if (tot === 0) { el.innerHTML = '<div style="color:var(--dim);font-family:var(--mono);font-size:9px;padding:8px 0;">No trade history yet. Start trading to build intelligence.</div>'; return; }
+  var modes = ['pioneer','power','boyboy','evenodd','accum'];
+  var html = '';
+  // Overall stats
+  var allW = TRADES.filter(function(t){return t.won;}).length;
+  var allWR = tot > 0 ? Math.round(allW/tot*100) : 0;
+  var allPnl = TRADES.reduce(function(s,t){return s+t.profit;},0);
+  html += '<div style="font-size:8px;color:var(--sub);font-family:var(--mono);letter-spacing:1px;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--border);">ALL TIME — '+tot+' TRADES</div>';
+  html += row('Win Rate', allWR+'%', allWR>=55?'good':allWR>=45?'warn':'bad');
+  html += row('Total P&L', (allPnl>=0?'+':'')+allPnl.toFixed(2), allPnl>=0?'good':'bad');
+  // Per mode
+  modes.forEach(function(mode) {
+    var mt = TRADES.filter(function(t){return t.mode===mode;});
+    if (mt.length === 0) return;
+    var mW = mt.filter(function(t){return t.won;}).length;
+    var mPnl = mt.reduce(function(s,t){return s+t.profit;},0);
+    var mWR = Math.round(mW/mt.length*100);
+    html += '<div style="font-size:8px;color:var(--sub);font-family:var(--mono);letter-spacing:1px;margin:8px 0 4px;padding-bottom:3px;border-bottom:1px solid var(--border);">'+mode.toUpperCase()+' — '+mt.length+' trades</div>';
+    html += row('Win Rate', mWR+'%', mWR>=55?'good':mWR>=45?'warn':'bad');
+    html += row('P&L', (mPnl>=0?'+':'')+mPnl.toFixed(2), mPnl>=0?'good':'bad');
+    // Best market
+    var mktMap = {};
+    mt.forEach(function(t){if(!mktMap[t.sym])mktMap[t.sym]={w:0,t:0};mktMap[t.sym].t++;if(t.won)mktMap[t.sym].w++;});
+    var bestMkt=null,bWR=0;
+    Object.keys(mktMap).forEach(function(s){var mk=mktMap[s];if(mk.t>=3&&mk.w/mk.t>bWR){bWR=mk.w/mk.t;bestMkt=s;}});
+    if (bestMkt) html += row('Best Market', bestMkt+' ('+Math.round(bWR*100)+'%)', 'good');
+    // Best time
+    var timeMap = {};
+    mt.forEach(function(t){if(!t.hour&&t.hour!==0)return;var h=t.hour;if(!timeMap[h])timeMap[h]={w:0,t:0};timeMap[h].t++;if(t.won)timeMap[h].w++;});
+    var bestHour=null,bhWR=0;
+    Object.keys(timeMap).forEach(function(h){var tk=timeMap[h];if(tk.t>=3&&tk.w/tk.t>bhWR){bhWR=tk.w/tk.t;bestHour=parseInt(h);}});
+    if (bestHour !== null) html += row('Best Hour (UTC)', bestHour+':00 ('+Math.round(bhWR*100)+'%)', 'good');
+    if (mode==='accum'){var avgT=mt.reduce(function(s,t){return s+(t.ticksSurvived||0);},0)/mt.length;html+=row('Avg Ticks Survived',avgT.toFixed(1),'warn');}
+  });
+  el.innerHTML = html;
+}
+
+function row(k, v, cls) {
+  return '<div class="intel-stat-row"><span class="k">'+k+'</span><span class="v '+cls+'">'+v+'</span></div>';
+}
+
+function updateIntelAdapt() {
+  var el = g('intelAdaptList'); if (!el) return;
+  var html = '';
+  var modes = ['pioneer','power','boyboy','evenodd','accum'];
+  modes.forEach(function(mode) {
+    var mt = TRADES.filter(function(t){return t.mode===mode;});
+    var adapt = ADAPT[mode];
+    var status = adapt.loaded ? 'LEARNED' : (mt.length >= 30 ? 'READY' : mt.length+'/30 trades');
+    var statusCol = adapt.loaded ? 'var(--profit)' : mt.length >= 30 ? 'var(--yellow)' : 'var(--dim)';
+    var mlModel=ML.models[mode];
+    var mlStatus=mlModel?mlModel.type.toUpperCase()+' '+mlModel.acc+'%':'NO MODEL';
+    var mlCol=mlModel?'var(--profit)':'var(--dim)';
+    var nextUpgrade=modeTrades.length<ML.minTrades?'Need '+(ML.minTrades-modeTrades.length)+' more':modeTrades.length<ML.nnThreshold?'NN at '+(ML.nnThreshold-modeTrades.length)+' more':'Neural Net active';
+    html += '<div style="margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">';
+    html += '<div style="display:flex;justify-content:space-between;margin-bottom:3px;"><span style="font-family:var(--mono);font-size:9px;font-weight:700;color:var(--text);">'+mode.toUpperCase()+'</span><span style="font-family:var(--mono);font-size:8px;color:'+statusCol+'">'+status+'</span></div>';
+    html += '<div style="display:flex;justify-content:space-between;margin-bottom:5px;"><span style="font-family:var(--mono);font-size:8px;color:var(--sub)">ML: <span style="color:'+mlCol+'">'+mlStatus+'</span></span><span style="font-family:var(--mono);font-size:7px;color:var(--dim)">'+nextUpgrade+'</span></div>';
+    if (mode === 'pioneer') {
+      html += threshItem('Min Score', adapt.minScore, 40, 80, adapt.loaded);
+      html += threshItem('Hot Digit %', adapt.hotPct, 12, 25, adapt.loaded);
+    }
+    if (mode === 'power') { html += threshItem('Max Cold %', adapt.coldPct||18, 10, 20, adapt.loaded); }
+    if (mode === 'power') {
+    var coldTrades = trades.filter(function(t) { return t.coldPct !== undefined && t.coldPct !== null; });
+    if (coldTrades.length >= 10) {
+      var coldWins = coldTrades.filter(function(t) { return t.coldPct <= 15 && t.won; }).length;
+      var coldTot = coldTrades.filter(function(t) { return t.coldPct <= 15; }).length;
+      var coldWR = coldTot >= 5 ? coldWins / coldTot : 0;
+      var relax = coldTrades.filter(function(t) { return t.coldPct > 15 && t.coldPct <= 18 && t.won; }).length;
+      var relaxTot = coldTrades.filter(function(t) { return t.coldPct > 15 && t.coldPct <= 18; }).length;
+      var relaxWR = relaxTot >= 5 ? relax / relaxTot : 0;
+      if (coldWR > relaxWR + 0.1) { ADAPT.power.coldPct = 15; } else { ADAPT.power.coldPct = 18; }
+      ADAPT.power.loaded = true;
+      storeSave('adapt_power', ADAPT.power);
+    }
+  }
+  if (mode === 'evenodd') { html += threshItem('Min Lean %', adapt.minLean, 54, 70, adapt.loaded); }
+    if (mode === 'accum') {
+      html += threshItem('RSI Low', adapt.rsiLow, 35, 49, adapt.loaded);
+      html += threshItem('RSI High', adapt.rsiHigh, 51, 65, adapt.loaded);
+      if (adapt.maxBBW) html += threshItem('Max BBW', Math.round(adapt.maxBBW*1000)/1000, 0, 0.05, adapt.loaded);
+    }
+    html += '</div>';
+  });
+  el.innerHTML = html || '<div style="color:var(--dim);font-family:var(--mono);font-size:9px;">Trade more to unlock adaptive thresholds.</div>';
+}
+
+function threshItem(name, val, min, max, learned) {
+  var pct = max > min ? Math.round((val - min) / (max - min) * 100) : 50;
+  return '<div class="threshold-item"><span class="tname">'+name+'</span><div style="display:flex;align-items:center;gap:5px;"><span class="tval">'+val+'</span><div class="threshold-bar"><div class="threshold-fill" style="width:'+pct+'%;background:'+(learned?'var(--profit)':'var(--accent)')+'"></div></div></div></div>';
+}
+
+// ── CLAUDE AI CHAT ────────────────────────────────────
+var _chatHistory = [];
+
+async function sendChat() {
+  var input = g('chatInput');
+  if (!input || !input.value.trim()) return;
+  var userMsg = input.value.trim();
+  input.value = '';
+  addChatMsg(userMsg, 'user');
+  addChatMsg('Analyzing your trading data...', 'thinking');
+  var thinkingEl = g('chatMessages').lastElementChild;
+
+  // Build context from trade history
+  var tot = TRADES.length;
+  var wins = TRADES.filter(function(t){return t.won;}).length;
+  var pnl = Math.round(TRADES.reduce(function(s,t){return s+t.profit;},0)*100)/100;
+  var recentLosses = TRADES.slice(-10).filter(function(t){return !t.won;}).length;
+
+  // Mode breakdown
+  var modeStats = {};
+  TRADES.forEach(function(t){
+    if(!modeStats[t.mode])modeStats[t.mode]={w:0,l:0,pnl:0};
+    if(t.won)modeStats[t.mode].w++;else modeStats[t.mode].l++;
+    modeStats[t.mode].pnl=Math.round((modeStats[t.mode].pnl+t.profit)*100)/100;
+  });
+  var modeStr = Object.keys(modeStats).map(function(m){var s=modeStats[m];return m+'('+s.w+'W/'+s.l+'L pnl:'+s.pnl+')';}).join(', ');
+
+  // Adaptive threshold status
+  var adaptStr = Object.keys(ADAPT).map(function(m){return m+':'+(ADAPT[m].loaded?'LEARNED':'default');}).join(', ');
+
+  var systemPrompt = "You are an AI trading analyst for a Deriv synthetic indices trading bot called DerivAI. You have access to the trader real performance data and help them optimize their strategy. Be concise, specific, and data-driven. Never give generic advice - always reference their actual numbers. Modes: Pioneer (DIFFERS hot digit), Power (OVER1/UNDER8), Boy Boy (fast DIFFERS), Even/Odd (lean detection), Accumulator (BB+RSI). Synthetic indices use cryptographic RNG so you cannot predict digits - focus on entry conditions and risk management.";
+
+  var context = 'trades='+tot+' wr='+(tot>0?Math.round(wins/tot*100):0)+'% pnl=$'+pnl+' rec10loss='+recentLosses+' '+modeStr+' adapt='+adaptStr+' mode='+AI.mode+' sil='+SIL.regime+' sess='+AI.sessPnl.toFixed(2);
+
+  _chatHistory.push({role:'user', content: context + ' QUESTION: ' + userMsg});
+  if (_chatHistory.length > 10) _chatHistory = _chatHistory.slice(-10);
+
+  try {
+    var response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': '',
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-io': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 400,
+        system: systemPrompt,
+        messages: _chatHistory
+      })
+    });
+    var data = await response.json();
+    var reply = data.content && data.content[0] ? data.content[0].text : 'Unable to get response.';
+    _chatHistory.push({role:'assistant', content: reply});
+    if (thinkingEl) thinkingEl.remove();
+    addChatMsg(reply, 'ai');
+  } catch(err) {
+    if (thinkingEl) thinkingEl.remove();
+    addChatMsg('Connection error. Check your internet connection.', 'ai');
+  }
+}
+
+function addChatMsg(text, type) {
+  var el = g('chatMessages'); if (!el) return;
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  div.textContent = text;
+  el.appendChild(div);
+  el.scrollTop = el.scrollHeight;
+}
+
+// ── ENHANCED TRADE RECORDING ─────────────────────────
+// Override addTlog to also save with context
+var _origAddTlog = null;
+function initIntelligence() {
+  loadTrades();
+  // Wire chat send
+  var sendBtn = g('chatSendBtn');
+  var chatIn = g('chatInput');
+  if (sendBtn) sendBtn.addEventListener('click', sendChat);
+  if (chatIn) chatIn.addEventListener('keydown', function(e){if(e.key==='Enter')sendChat();});
+}
+
+// Called from each mode's result handler with context
+function recordTrade(sym, mode, profit, won, context) {
+  var rec = {
+    sym: sym, mode: mode, profit: profit, won: won,
+    ts: Date.now(), hour: new Date().getUTCHours(),
+    silRegime: SIL.regime
+  };
+  // Merge context (entryScore, hotPct, rsi, bbw, lean, ticksSurvived etc)
+  if (context) Object.keys(context).forEach(function(k){rec[k]=context[k];});
+  // Auto-capture current sym analysis data
+  if (rec.sym && ST[rec.sym]) {
+    try {
+      var _a = ana(rec.sym);
+      if (!rec.entryScore && _a.score) rec.entryScore = _a.score;
+      if (!rec.hotPct && _a.rawHP) rec.hotPct = Math.round(_a.rawHP*10)/10;
+      if (rec.chi2sig === undefined) rec.chi2sig = _a.chi2sig ? 1 : 0;
+      if (!rec.lean && _a.ep) rec.lean = Math.round(Math.max(_a.ep,_a.op)*10)/10;
+    } catch(e) {}
+  }
+  saveTrade(rec);
+}
+// ══════════════════════════════════════════════════════
+// END INTELLIGENCE ENGINE
+// ══════════════════════════════════════════════════════
+
 // EVENT WIRING
 document.addEventListener('DOMContentLoaded',function(){
   g('loginBtn').addEventListener('click',doLogin);
@@ -1487,6 +2732,13 @@ document.addEventListener('DOMContentLoaded',function(){
   g('logoutBtn').addEventListener('click',doLogout);
   g('themeBtn').addEventListener('click',toggleTheme);
   g('errClrBtn').addEventListener('click',function(){g('errList').innerHTML='';g('errBar').style.display='none';sel('errCnt','0');});
+  g('accumCashoutBtn').addEventListener('click',function(){
+    if(AI.acActiveCid){log('ac','Manual cashout requested','warn');doCashout(AI.acActiveCid);}
+  });
+  // Update projection on config change
+  ['acStake','acGrowth','acTicks','acTP'].forEach(function(id){
+    var el=g(id);if(el)el.addEventListener('change',updateAccumProjection);
+  });
   g('tlogClr').addEventListener('click',function(){g('tlogBody').innerHTML='';_trades=0;_tPnl=0;sel('tlogCnt','0 trades');var tl=g('tlogPnl');if(tl){tl.textContent='P&L: --';tl.style.color='var(--sub)';}});
   try{var saved=sessionStorage.getItem('dat'),expiry=parseInt(sessionStorage.getItem('dax')||'0');if(saved&&Date.now()<expiry){g('tokenInput').value=saved;userToken=saved;verifyToken(saved);}}catch(e){}
 });
